@@ -1,13 +1,13 @@
 import './App.css'
-import RoundInfoContainer from './components/header/RoundInfo'
+import HeaderContainer from './components/header/HeaderContainer'
 
 function App() {
 
   return (
-    <>
-      {/* Round Info Container */}
-      <RoundInfoContainer />
-    </>
+    <div className='w-screen h-screen'>
+      {/* Header Container */}
+      <HeaderContainer />
+    </div>
   )
 }
 
