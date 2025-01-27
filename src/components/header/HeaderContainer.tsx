@@ -11,10 +11,12 @@ interface HeaderInfoContainer {
 const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
 
     let player = {
+        name: 'Miguel Angel',
         image: 'public/miguel_angel.png'
     };
 
     let opponent = {
+        name: 'The Chinese',
         image: 'public/ander.png'
     }
 
@@ -27,7 +29,9 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
             />
 
             {/* Attacker Attributes */}
-            <AttackerAttributesContainer />
+            <AttackerAttributesContainer
+                player={player}
+            />
 
             {/* Round Container */}
             <RoundContainer />
