@@ -5,7 +5,7 @@ interface BattleTimeInterface {
 const BattleTime: React.FC<BattleTimeInterface> = ({ }) => {
 
     return (
-        <div className="flex h-1/2 w-full rounded-md border-1 mt-[1%] justify-center items-center">
+        <div className="flex h-1/2 w-full rounded-md mt-[1%] text-5xl justify-center items-center text-red-500">
             8
         </div>
     );

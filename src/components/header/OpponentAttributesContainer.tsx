@@ -12,7 +12,7 @@ const OpponentAttributesContainer: React.FC<OpponentAttributesContainerInterface
             {/* Opponent Life Bar */}
             <OpponentLifeBar />
 
-            <div className="flex h-full w-[65%] ml-auto rounded-md items-center justify-center z-20">
+            <div className="flex h-full w-[65%] ml-auto rounded-md items-center justify-center text-2xl z-20">
                 {opponent.name}
             </div>
         </div>

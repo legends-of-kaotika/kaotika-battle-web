@@ -12,7 +12,7 @@ const AttackerAttributesContainer: React.FC<AttackerAttributesInterface> = ({ pl
             {/* Attacker Life Bar */}
             <AttackerLifeBar />
 
-            <div className="flex h-full w-[65%] rounded-md items-center justify-center z-20">
+            <div className="flex h-full w-[65%] rounded-md items-center justify-center text-2xl z-20">
                 {player.name}
             </div>
         </div>

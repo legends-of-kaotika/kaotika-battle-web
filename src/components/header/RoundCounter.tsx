@@ -5,7 +5,8 @@ interface RoundCounterInterface {
 const RoundCounter: React.FC<RoundCounterInterface> = ({ }) => {
 
     return (
-        <div className="flex h-full w-full rounded-md border-1 items-center justify-center">
+        <div className="flex h-full w-full rounded-md items-center justify-center text-6xl">
+            Round
             12
         </div>
     );
