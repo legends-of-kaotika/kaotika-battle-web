@@ -3,7 +3,8 @@ import HeaderContainer from './components/header/HeaderContainer';
 import BattleContainer from './components/battle/BattleContainer';
 import { useState } from 'react';
 import { attackerData, defenderData } from './constants/playersData';
-import borderImage from '../public/images/header_border.png'
+import battleImage from '/images/battle_bg.jpg';
+import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 
 function App() {
@@ -11,17 +12,18 @@ function App() {
   const [defender, setDefender] = useState(defenderData);
 
   return (
-    <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${borderImage})` }}>
+    <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
+      <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${borderImage})` }}>
 
-      {/* Header Container */}
-      <HeaderContainer />
+        {/* Header Container */}
+        <HeaderContainer />
 
-      <BattleContainer/>
+        <BattleContainer/>
 
-      {/* Footer Container */}
-      <Hud currentPhase='attack'/>
+        {/* Footer Container */}
+        <Hud currentPhase='attack'/>
 
-
+      </div>
     </div>
   )
 }
