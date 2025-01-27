@@ -11,7 +11,7 @@ interface HeaderInfoContainer {
 const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
 
     return (
-        <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md border-1">
+        <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md">
 
             {/* Attacker Avatar */}
             <AttackerAvatar />
