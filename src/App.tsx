@@ -21,10 +21,10 @@ function App() {
 
       {/* Header Container */}
       <HeaderContainer />
-      <BattleContainer/>
+      <BattleContainer />
 
       {/* Footer Container */}
-      <Hud currentPhase='attack'/>
+      <Hud currentPhase='attack' />
 
 
     </div>

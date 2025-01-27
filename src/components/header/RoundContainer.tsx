@@ -7,15 +7,15 @@ interface RoundContainerInterface {
 
 const RoundContainer: React.FC<RoundContainerInterface> = ({ }) => {
 
-    return (
-        <div className="flex flex-col justify-items-start items-start h-full w-1/12 rounded-md z-20">
-            {/* Round Number */}
-            <RoundCounter />
+  return (
+    <div className="flex flex-col justify-items-start items-start h-full w-1/12 rounded-md z-20">
+      {/* Round Number */}
+      <RoundCounter />
 
-            {/* Battle Time */}
-            <BattleTime />
-        </div>
-    );
+      {/* Battle Time */}
+      <BattleTime />
+    </div>
+  );
 };
 
 export default RoundContainer;
