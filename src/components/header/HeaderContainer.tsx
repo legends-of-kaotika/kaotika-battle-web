@@ -37,7 +37,9 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
             <RoundContainer />
 
             {/* Opponent Attributes */}
-            <OpponentAttributesContainer />
+            <OpponentAttributesContainer
+                opponent={opponent}
+            />
 
             {/* Opponent Avatar */}
             <OpponentAvatar

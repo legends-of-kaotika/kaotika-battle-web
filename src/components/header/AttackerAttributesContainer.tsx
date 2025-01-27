@@ -7,7 +7,7 @@ interface AttackerAttributesInterface {
 const AttackerAttributesContainer: React.FC<AttackerAttributesInterface> = ({ player }) => {
 
     return (
-        <div className="flex flex-col justify-items-start items-start  h-[40%] w-[27%] ml-[2.5%] mt-[5.2%] rounded-md">
+        <div className="flex flex-col justify-items-start items-start h-[40%] w-[27%] ml-[2.5%] mt-[5.2%] rounded-md">
             <div className="flex h-full w-full rounded-md items-center justify-center z-0">
                 <img src={leftRightBar}
                     alt="Life Bar"
