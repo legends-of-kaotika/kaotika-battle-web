@@ -1,7 +1,7 @@
 import './App.css'
 import HeaderContainer from './components/header/HeaderContainer'
 import borderImage from '../public/images/header_border.png'
-//import Hud from './components/footer/Hud';
+import Hud from './components/footer/Hud';
 import BattleContainer from './components/battle/BattleContainer'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
       <BattleContainer/>
       {/* Potion Container */}
-      {/* <Hud/> */}
+      <Hud/>
 
     </div>
   )

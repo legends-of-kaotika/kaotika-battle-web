@@ -8,7 +8,7 @@ interface Hud {
 
 const Hud: React.FC<Hud> = ({}) => {
     return (
-        <div className="w-[100%] border-2 h-[25%] flex justify-between">
+        <div className="w-[100%] border-2 h-[25%] flex justify-between mt-10">
             <Phase/>
             <TurnPhotos />
             <History/>

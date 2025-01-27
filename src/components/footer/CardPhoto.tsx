@@ -1,11 +1,13 @@
+import CardImage from "../../assets/player_card.png";
+
 interface CardPhoto{
 
 }
 
 const CardPhoto: React.FC<CardPhoto> = ({}) => {
     return (
-        <div className="w-[30%] h-full  border-green-400 border-2 skew-x-12 ml-5">
-            <img className="w-[100%] h-full" />
+        <div className="w-[35%] h-full -skew-x-12">
+            <img className="w-[100%] h-full" src={CardImage}/>
         </div>
     )
 }
