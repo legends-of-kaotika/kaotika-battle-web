@@ -5,7 +5,7 @@ import borderImage from '../public/images/header_border.png'
 function App() {
 
   return (
-    <div className='w-screen h-screen bg-center bg-cover border-1' style={{ backgroundImage: `url(${borderImage})` }}>
+    <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${borderImage})` }}>
 
       {/* Header Container */}
       <HeaderContainer />
