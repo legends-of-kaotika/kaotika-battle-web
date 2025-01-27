@@ -10,11 +10,17 @@ interface HeaderInfoContainer {
 
 const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
 
+    let player = {
+        image: 'public/miguel_angel.png'
+    };
+
     return (
         <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md border-1">
 
             {/* Attacker Avatar */}
-            <AttackerAvatar />
+            <AttackerAvatar
+                player={player}
+            />
 
             {/* Attacker Attributes */}
             <AttackerAttributesContainer />
