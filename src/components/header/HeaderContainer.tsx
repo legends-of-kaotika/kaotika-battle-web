@@ -14,6 +14,10 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
         image: 'public/miguel_angel.png'
     };
 
+    let opponent = {
+        image: 'public/ander.png'
+    }
+
     return (
         <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md border-1">
 
@@ -32,7 +36,9 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
             <OpponentAttributesContainer />
 
             {/* Opponent Avatar */}
-            <OpponentAvatar />
+            <OpponentAvatar
+                opponent={opponent}
+            />
 
         </div>
     );
