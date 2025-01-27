@@ -5,8 +5,8 @@ interface RoundContainerInterface {
 const RoundContainer: React.FC<RoundContainerInterface> = ({ }) => {
 
     return (
-        <div className="flex flex-col h-full w-1/12 justify-center items-center rounded-md">
-            
+        <div className="justify-items-start items-start flex h-full w-1/12 rounded-md">
+
         </div>
     );
 };
