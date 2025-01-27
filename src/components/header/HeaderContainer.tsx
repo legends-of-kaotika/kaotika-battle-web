@@ -1,4 +1,5 @@
 import RoundContainer from "./RoundContainer";
+import HealthComponent from "./HealthComponent";
 
 interface HeaderInfoContainer {
 
@@ -11,6 +12,9 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
             
             {/* <RoundContainer/> */}
             <RoundContainer/>
+
+            {/* <HealthComponent*/}
+            <HealthComponent health={100}/>
 
         </div>
     );
