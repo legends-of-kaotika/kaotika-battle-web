@@ -7,7 +7,7 @@ interface TurnPhotos{
 
 const TurnPhotos: React.FC<TurnPhotos> = ({}) => { 
     return (
-        <div className="w-[48%] flex flex-row ">
+        <div className="w-[56%] flex flex-row ">
             <CardPhoto/>
             <CardPhoto></CardPhoto>
             <CardPhoto></CardPhoto>
