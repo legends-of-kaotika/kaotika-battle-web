@@ -3,7 +3,7 @@ import AttackerAvatar from "./AttackerAvatarContainer";
 import OpponentAttributesContainer from "./OpponentAttributesContainer";
 import OpponentAvatar from "./OpponentAvatar";
 import RoundContainer from "./RoundContainer";
-import HealthComponent from "./HealthComponent";
+//import HealthComponent from "./HealthComponent";
 
 interface HeaderInfoContainer {
 
@@ -30,7 +30,7 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
             <OpponentAvatar />
 
             {/* <HealthComponent*/}
-            <HealthComponent health={100}/>
+            {/* <HealthComponent health={100}/> */}
 
         </div>
     );
