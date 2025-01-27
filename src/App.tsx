@@ -1,8 +1,8 @@
 import './App.css'
 import HeaderContainer from './components/header/HeaderContainer'
-import PotionContainer from './components/Potions/PotionContainer'
 import borderImage from '../public/images/header_border.png'
 //import Hud from './components/footer/Hud';
+import BattleContainer from './components/battle/BattleContainer'
 
 function App() {
 
@@ -12,10 +12,8 @@ function App() {
       {/* Header Container */}
       <HeaderContainer />
 
-
+      <BattleContainer/>
       {/* Potion Container */}
-      <PotionContainer antidote={true} enhancer={true} healing={true} />
-
       {/* <Hud/> */}
 
     </div>
