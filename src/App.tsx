@@ -13,17 +13,23 @@ function App() {
 
   return (
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
-      <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${borderImage})` }}>
 
-        {/* Header Container */}
-        <HeaderContainer />
+      {/* Background Image */}
+      <img src={borderImage}
+        alt="Background"
+        className="absolute top-0 left-0 w-full h-full object-cover z-10"
+      />
 
-        <BattleContainer/>
+      {/* Header Container */}
+      <HeaderContainer />
+      <BattleContainer />
 
-        {/* Footer Container */}
-        <Hud currentPhase='attack'/>
+      {/* Footer Container */}
+      <Hud currentPhase='attack' />
 
-      </div>
+      {/* Footer Container */}
+      <Hud currentPhase='attack' />
+
     </div>
   )
 }

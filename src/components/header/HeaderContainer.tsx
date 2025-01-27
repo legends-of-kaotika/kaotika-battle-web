@@ -11,29 +11,47 @@ interface HeaderInfoContainer {
 
 const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
 
-    return (
-        <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md">
+  let player = {
+    name: 'Miguel Angel',
+    image: 'public/miguel_angel.png'
+  };
 
-            {/* Attacker Avatar */}
-            <AttackerAvatar />
+  let opponent = {
+    name: 'The Chinese',
+    image: 'public/ander.png'
+  }
 
-            {/* Attacker Attributes */}
-            <AttackerAttributesContainer />
+  return (
+    <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md">
 
-            {/* Round Container */}
-            <RoundContainer />
+      {/* Attacker Avatar */}
+      <AttackerAvatar
+        player={player}
+      />
 
-            {/* Opponent Attributes */}
-            <OpponentAttributesContainer />
+      {/* Attacker Attributes */}
+      <AttackerAttributesContainer
+        player={player}
+      />
 
-            {/* Opponent Avatar */}
-            <OpponentAvatar />
+      {/* Round Container */}
+      <RoundContainer />
 
-            {/* <HealthComponent*/}
-            {/* <HealthComponent health={100}/> */}
+      {/* Opponent Attributes */}
+      <OpponentAttributesContainer
+        opponent={opponent}
+      />
 
-        </div>
-    );
+      {/* Opponent Avatar */}
+      <OpponentAvatar
+        opponent={opponent}
+      />
+
+      {/* <HealthComponent*/}
+      {/* <HealthComponent health={100}/> */}
+
+    </div>
+  );
 };
 
 export default HeaderContainer;
