@@ -3,6 +3,7 @@ import HeaderContainer from './components/header/HeaderContainer'
 import borderImage from '../public/images/header_border.png'
 import Hud from './components/footer/Hud';
 import BattleContainer from './components/battle/BattleContainer'
+import Hud from './components/footer/Hud';
 
 function App() {
 
@@ -13,8 +14,10 @@ function App() {
       <HeaderContainer />
 
       <BattleContainer/>
-      {/* Potion Container */}
-      <Hud/>
+
+      {/* Footer Container */}
+      <Hud currentPhase='attack'/>
+
 
     </div>
   )
