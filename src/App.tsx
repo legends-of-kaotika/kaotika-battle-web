@@ -10,7 +10,9 @@ function App() {
 
       {/* Header Container */}
       <HeaderContainer />
-      <PotionContainer potion1={true} potion2={true} potion3={true} />
+
+      {/* Potion Container */}
+      <PotionContainer antidote={true} enhancer={true} healing={true} />
     </div>
   )
 }
