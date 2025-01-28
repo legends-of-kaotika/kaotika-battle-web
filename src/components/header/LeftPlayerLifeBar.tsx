@@ -19,8 +19,8 @@ const LeftPlayerLifeBar: React.FC<LeftPlayerLifeBarInterface> = ({ maxHitpoints,
 
   return (
     <div className="flex inline-row h-[60%] w-full">
-      <div className={`bg-left bg-cover`} style={{ backgroundImage: `url(${leftLifeBar})`, width: `${life}%` }} />
-      <div className={`bg-left bg-cover`} style={{ backgroundImage: `url(${missingLeftLifeBar})`, width: `${missingLife}%` }} />
+      <div className={`bg-left bg-cover transition-all duration-1000 transition-slowest ease`} style={{ backgroundImage: `url(${leftLifeBar})`, width: `${life}%` }} />
+      <div className={`bg-left bg-cover transition-all duration-1000 transition-slowest ease`} style={{ backgroundImage: `url(${missingLeftLifeBar})`, width: `${missingLife}%` }} />
     </div>
   )
 };
