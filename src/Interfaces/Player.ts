@@ -18,7 +18,8 @@ export interface Player {
   attributes: Modifier;
   base_attributes: Modifier;
   equipment:{
-    weapon: Weapon,
+    // weapon: Weapon,
+    weapon: string,
     healing_potion: HealingPotion,
     antidote_potion: AntidotePotion,
     enhancer_potion: EnhancerPotion,
