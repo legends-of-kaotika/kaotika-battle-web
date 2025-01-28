@@ -1,4 +1,4 @@
-import { Player } from "../../interfaces/Player";
+import { Player } from "../../Interfaces/Player";
 import PotionContainer from "../Potions/PotionContainer";
 import Battle from "./Battle";
 interface BattleContainerProps {

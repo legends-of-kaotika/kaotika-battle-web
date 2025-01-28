@@ -1,5 +1,6 @@
-import { Player } from "../../interfaces/Player";
+import { Player } from "../../Interfaces/Player";
 import Opponent from "./Opponent";
+
 interface BattleProp{
   leftPlayer: Player;
   rightPlayer: Player
