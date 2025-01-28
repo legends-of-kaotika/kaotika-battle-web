@@ -1,9 +1,11 @@
 import rightLifeBar from '/images/life_bar_right.gif'
 
 interface OpponentLifeBarInterface {
+  maxHitpoints: number,
+  hitpoints: number,
 }
 
-const OpponentLifeBar: React.FC<OpponentLifeBarInterface> = ({ }) => {
+const OpponentLifeBar: React.FC<OpponentLifeBarInterface> = ({ maxHitpoints, hitpoints }) => {
 
   return (
     <div className="flex h-full w-full rounded-md items-center justify-center z-0">

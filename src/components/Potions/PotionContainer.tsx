@@ -1,8 +1,8 @@
 import React from 'react';
-import potion_disabled from '../../../public/potion_disabled.png';
-import antidote_1 from '../../../public/antidote_1.png';
-import enhancer_2 from '../../../public/enhancer_2.png';
-import healing_3 from '../../../public/healing_3.png';
+import potion_disabled from '/images/potion_disabled.png';
+import antidote_1 from '/images/antidote_1.png';
+import enhancer_2 from '/images/enhancer_2.png';
+import healing_3 from '/images/healing_3.png';
 
 interface PotionContainerInterface {
   antidote: boolean;

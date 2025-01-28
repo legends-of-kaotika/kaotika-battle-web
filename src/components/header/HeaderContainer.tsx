@@ -3,35 +3,25 @@ import AttackerAvatar from "./AttackerAvatarContainer";
 import OpponentAttributesContainer from "./OpponentAttributesContainer";
 import OpponentAvatar from "./OpponentAvatar";
 import RoundContainer from "./RoundContainer";
-//import HealthComponent from "./HealthComponent";
 
 interface HeaderInfoContainer {
-
+  leftPlayer: any,
+  rightPlayer: any,
 }
 
-const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
-
-  let player = {
-    name: 'Miguel Angel',
-    image: 'public/miguel_angel.png'
-  };
-
-  let opponent = {
-    name: 'The Chinese',
-    image: 'public/ander.png'
-  }
+const HeaderContainer: React.FC<HeaderInfoContainer> = ({ leftPlayer, rightPlayer }) => {
 
   return (
     <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md">
 
       {/* Attacker Avatar */}
       <AttackerAvatar
-        player={player}
+        player={leftPlayer}
       />
 
       {/* Attacker Attributes */}
       <AttackerAttributesContainer
-        player={player}
+        player={leftPlayer}
       />
 
       {/* Round Container */}
@@ -39,12 +29,12 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
 
       {/* Opponent Attributes */}
       <OpponentAttributesContainer
-        opponent={opponent}
+        player={rightPlayer}
       />
 
       {/* Opponent Avatar */}
       <OpponentAvatar
-        opponent={opponent}
+        player={rightPlayer}
       />
 
       {/* <HealthComponent*/}

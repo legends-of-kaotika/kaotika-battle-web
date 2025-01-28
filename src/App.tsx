@@ -3,15 +3,15 @@ import HeaderContainer from './components/header/HeaderContainer';
 import BattleContainer from './components/battle/BattleContainer';
 import { useEffect, useState } from 'react';
 import { attackerData, defenderData } from './constants/playersData';
-import battleImage from '/images/battle_bg.jpg';
+import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
-import Hud from './components/footer/Hud';
+
 import { socket } from './utils/socket';
 import { Player } from './interfaces/Player';
 
 function App() {
-  const [attacker, setAttacker] = useState(attackerData);
-  const [defender, setDefender] = useState(defenderData);
+  const [leftPlayer, setLeftplayer] = useState(attackerData);
+  const [rightPlayer, setRightPlayer] = useState(defenderData);
 
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [players, setPlayers] = useState<Player[]>([]);
@@ -59,14 +59,9 @@ function App() {
       />
 
       {/* Header Container */}
-      <HeaderContainer />
+      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
       <BattleContainer />
 
-      {/* Footer Container */}
-      <Hud currentPhase='attack' />
-
-      {/* Footer Container */}
-      <Hud currentPhase='attack' />
 
     </div>
   )
