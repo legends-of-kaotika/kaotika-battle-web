@@ -1,8 +1,8 @@
-interface OpponentAvatarInterface {
+interface RightPlayerAvatarInterface {
   player: any
 }
 
-const OpponentAvatar: React.FC<OpponentAvatarInterface> = ({ player }) => {
+const RightPlayerAvatar: React.FC<RightPlayerAvatarInterface> = ({ player }) => {
 
   return (
     <div className="justify-items-start items-start h-[40%] w-[7%] mr-[4.5%] mt-[3.5%] flex rounded-md">
@@ -14,4 +14,4 @@ const OpponentAvatar: React.FC<OpponentAvatarInterface> = ({ player }) => {
   );
 };
 
-export default OpponentAvatar;
+export default RightPlayerAvatar;

@@ -1,7 +1,7 @@
-import AttackerAttributesContainer from "./AttackerAttributesContainer";
-import AttackerAvatar from "./AttackerAvatarContainer";
-import OpponentAttributesContainer from "./OpponentAttributesContainer";
-import OpponentAvatar from "./OpponentAvatar";
+import LeftPlayerAttributes from "./LeftPlayerAttributesContainer";
+import LeftPlayerAvatar from "./LeftPlayerAvatarContainer";
+import RightPlayerAttributes from "./RightPlayerAttributesContainer";
+import RightPlayerAvatar from "./RightPlayerAvatar";
 import RoundContainer from "./RoundContainer";
 
 interface HeaderInfoContainer {
@@ -14,26 +14,26 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ leftPlayer, rightPlaye
   return (
     <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md">
 
-      {/* Attacker Avatar */}
-      <AttackerAvatar
+      {/* Left Player Avatar */}
+      <LeftPlayerAvatar
         player={leftPlayer}
       />
 
-      {/* Attacker Attributes */}
-      <AttackerAttributesContainer
+      {/* Left Player Attributes */}
+      <LeftPlayerAttributes
         player={leftPlayer}
       />
 
       {/* Round Container */}
       <RoundContainer />
 
-      {/* Opponent Attributes */}
-      <OpponentAttributesContainer
+      {/* Right Player Attributes */}
+      <RightPlayerAttributes
         player={rightPlayer}
       />
 
-      {/* Opponent Avatar */}
-      <OpponentAvatar
+      {/* Right Player Avatar */}
+      <RightPlayerAvatar
         player={rightPlayer}
       />
 

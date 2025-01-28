@@ -1,8 +1,8 @@
-interface AttackerAvatarInterface {
+interface LeftPlayerAvatarInterface {
   player: any
 }
 
-const AttackerAvatar: React.FC<AttackerAvatarInterface> = ({ player }) => {
+const LeftPlayerAvatar: React.FC<LeftPlayerAvatarInterface> = ({ player }) => {
 
   return (
     <div className="relative flex flex-start h-[40%] w-[7%] ml-[4.5%] mt-[3.5%] justify-center items-center">
@@ -14,4 +14,4 @@ const AttackerAvatar: React.FC<AttackerAvatarInterface> = ({ player }) => {
   );
 };
 
-export default AttackerAvatar;
+export default LeftPlayerAvatar;
