@@ -39,6 +39,7 @@ function App() {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
       socket.off('connectedUsers');
+      socket.off('web-sendUser');
     }
   }, []);
 
