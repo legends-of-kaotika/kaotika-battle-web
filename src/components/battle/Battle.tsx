@@ -1,10 +1,15 @@
+import { Player } from "../../interfaces/Player";
 import Opponent from "./Opponent";
+interface BattleProp{
+  leftPlayer: Player;
+  rightPlayer: Player
+}
 
-const Battle = () => {
+const Battle: React.FC<BattleProp> = ({leftPlayer, rightPlayer}) => {
   return (
     <div className="w-[98%] flex justify-around items-center">
-      <Opponent />
-      <Opponent />
+      <Opponent player={leftPlayer}></Opponent>
+      <Opponent player={rightPlayer}></Opponent>
     </div>
   )
 }

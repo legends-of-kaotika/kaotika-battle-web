@@ -59,7 +59,7 @@ function App() {
 
       {/* Header Container */}
       <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
-      <BattleContainer />
+      <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
 
 
     </div>
