@@ -10,10 +10,10 @@ const LeftPlayerAttributes: React.FC<LeftPlayerAttributesInterface> = ({ player 
     <div className="flex flex-col justify-items-start items-start h-[40%] w-[27%] ml-[2.5%] mt-[5.2%] rounded-md">
 
       {/* Left Player Life Bar */}
-      <LeftPlayerLifeBar maxHitpoints={player.maxHitpoints} hitpoints={player.hitpoints}/>
+      <LeftPlayerLifeBar maxHitpoints={player.maxHitpoints} hitpoints={player.hitpoints} />
 
       <div className="flex h-full w-[65%] rounded-md items-center justify-center text-2xl z-20">
-        {player.name}
+        {player.nickname}
       </div>
     </div>
   );
