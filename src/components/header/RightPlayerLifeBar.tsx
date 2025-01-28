@@ -1,11 +1,11 @@
 import rightLifeBar from '/images/life_bar_right.gif'
 
-interface OpponentLifeBarInterface {
+interface RightPlayerLifeBarInterface {
   maxHitpoints: number,
   hitpoints: number,
 }
 
-const OpponentLifeBar: React.FC<OpponentLifeBarInterface> = ({ maxHitpoints, hitpoints }) => {
+const RightPlayerLifeBar: React.FC<RightPlayerLifeBarInterface> = ({ maxHitpoints, hitpoints }) => {
 
   return (
     <div className="flex h-full w-full rounded-md items-center justify-center z-0">
@@ -17,4 +17,4 @@ const OpponentLifeBar: React.FC<OpponentLifeBarInterface> = ({ maxHitpoints, hit
   );
 };
 
-export default OpponentLifeBar;
+export default RightPlayerLifeBar;

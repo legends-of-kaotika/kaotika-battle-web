@@ -1,11 +1,11 @@
 import leftRightBar from '/images/life_bar_left.gif'
 
-interface AttackerLifeBar {
+interface LeftPlayerLifeBarInterface {
   maxHitpoints: number,
   hitpoints: number,
 }
 
-const AttackerLifeBar: React.FC<AttackerLifeBar> = ({ maxHitpoints, hitpoints }) => {
+const LeftPlayerLifeBar: React.FC<LeftPlayerLifeBarInterface> = ({ maxHitpoints, hitpoints }) => {
 
   return (
     <div className="flex h-full w-full rounded-md items-center justify-center z-0">
@@ -17,4 +17,4 @@ const AttackerLifeBar: React.FC<AttackerLifeBar> = ({ maxHitpoints, hitpoints })
   );
 };
 
-export default AttackerLifeBar;
+export default LeftPlayerLifeBar;
