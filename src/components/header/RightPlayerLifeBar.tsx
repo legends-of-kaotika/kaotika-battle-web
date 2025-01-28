@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import rightLifeBar from '/images/life_bar_right.gif';
 import missingRightLifeBar from '/images/missing_life_bar_right.png';
 
-interface OpponentLifeBarInterface {
-  maxHitpoints: number;
-  hitpoints: number;
+interface RightPlayerLifeBarInterface {
+  maxHitpoints: number,
+  hitpoints: number,
 }
 
-const OpponentLifeBar: React.FC<OpponentLifeBarInterface> = ({ maxHitpoints, hitpoints }) => {
+const RightPlayerLifeBar: React.FC<RightPlayerLifeBarInterface> = ({ maxHitpoints, hitpoints }) => {
+
   const [life, setLife] = useState(hitpoints / maxHitpoints * 100);
   const [missingLife, setMissingLife] = useState((maxHitpoints - hitpoints) / maxHitpoints * 100);
 
@@ -24,4 +25,4 @@ const OpponentLifeBar: React.FC<OpponentLifeBarInterface> = ({ maxHitpoints, hit
   )
 }
 
-export default OpponentLifeBar;
+export default RightPlayerLifeBar;
