@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 import { attackerData, defenderData } from './constants/playersData';
 import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
+import Hud from './components/footer/Hud';
 
 import { socket } from './utils/socket';
-import { Player } from './interfaces/player/Player';
+import { Player } from './Interfaces/Player';
 
 function App() {
   const [leftPlayer, setLeftplayer] = useState(attackerData);
@@ -17,21 +18,21 @@ function App() {
   const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
-    function onConnect(){
+    function onConnect() {
       setIsConnected(true);
     }
 
-    function onDisconnect(){
+    function onDisconnect() {
       setIsConnected(false);
     }
 
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
 
-    socket.on('web-sendUser', data => {
+    socket.on('web-sendUser', (data: Player) => {
       console.log("DENTRO DE SEND USER");
       console.log(data);
-      
+
       setPlayers(prevState => [...prevState, data]);
     });
 
@@ -58,9 +59,14 @@ function App() {
       />
 
       {/* Header Container */}
-      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
-      <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
+      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
+      <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
+
+      {/* Footer Container */}
+      <Hud />
     </div>
+
+
   )
 }
 
