@@ -17,7 +17,7 @@ export function getPhotoByRole(player: Player): string {
             image = '/images/Warrior1.png';
             break;
         default:
-            image = '/images/a.png'
+            image = ''
     }
 
     return image;
