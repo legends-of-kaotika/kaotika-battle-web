@@ -27,11 +27,14 @@ function App() {
       setIsConnected(false);
     }
 
-    socket.emit('web-sendUsers');
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
-    socket.on('connectedUsers', data => {
-      setPlayers(data);
+
+    socket.on('web-sendUser', data => {
+      console.log("DENTRO DE SEND USER");
+      console.log(data);
+      
+      setPlayers(prevState => [...prevState, data]);
     });
 
     return () => {
@@ -42,11 +45,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("is conected");
-    console.log(isConnected);
-  }, [isConnected]);
-
-  useEffect(() => {
+    console.log("PLAYERS: ");
     filterPlayers(players)
 
     console.log("DAVOKAR PLAYERS");
