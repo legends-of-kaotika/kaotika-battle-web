@@ -8,8 +8,8 @@ import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 
 function App() {
-  const [attacker, setAttacker] = useState(attackerData);
-  const [defender, setDefender] = useState(defenderData);
+  const [leftPlayer, setLeftplayer] = useState(attackerData);
+  const [rightPlayer, setRightPlayer] = useState(defenderData);
 
   return (
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
@@ -21,7 +21,7 @@ function App() {
       />
 
       {/* Header Container */}
-      <HeaderContainer />
+      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
       <BattleContainer />
 
       {/* Footer Container */}
