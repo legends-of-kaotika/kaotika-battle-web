@@ -7,9 +7,13 @@ import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 
+
 function App() {
   const [attacker, setAttacker] = useState(attackerData);
   const [defender, setDefender] = useState(defenderData);
+
+ 
+
 
   return (
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
@@ -25,10 +29,7 @@ function App() {
       <BattleContainer />
 
       {/* Footer Container */}
-      <Hud currentPhase='attack' />
-
-      {/* Footer Container */}
-      <Hud currentPhase='attack' />
+      <Hud/>
 
     </div>
   )
