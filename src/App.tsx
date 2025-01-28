@@ -3,15 +3,16 @@ import HeaderContainer from './components/header/HeaderContainer';
 import BattleContainer from './components/battle/BattleContainer';
 import { useState } from 'react';
 import { attackerData, defenderData } from './constants/playersData';
-import borderImage from '../public/images/header_border.png'
-import Hud from './components/footer/Hud';
+import battleImage from '/images/battle_bg.webp';
+import borderImage from '/images/header_border.png';
+
 
 function App() {
   const [attacker, setAttacker] = useState(attackerData);
   const [defender, setDefender] = useState(defenderData);
 
   return (
-    <div className='relative w-screen h-screen'>
+    <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
 
       {/* Background Image */}
       <img src={borderImage}
@@ -22,9 +23,6 @@ function App() {
       {/* Header Container */}
       <HeaderContainer />
       <BattleContainer />
-
-      {/* Footer Container */}
-      <Hud currentPhase='attack' />
 
 
     </div>

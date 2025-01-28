@@ -1,6 +1,6 @@
 import React from "react";
-import life_bar_left from "../../../public/life_bar_left.gif";
-import life_bar_right from "../../../public/life_bar_rigth.gif";
+import life_bar_left from "/images/life_bar_left.gif";
+import life_bar_right from "/images/life_bar_right.gif";
 
 interface HealthComponentInterface {
 

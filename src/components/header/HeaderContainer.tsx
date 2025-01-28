@@ -13,12 +13,12 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ }) => {
 
   let player = {
     name: 'Miguel Angel',
-    image: 'public/miguel_angel.png'
+    image: 'images/miguel_angel.png'
   };
 
   let opponent = {
     name: 'The Chinese',
-    image: 'public/ander.png'
+    image: 'images/ander.png'
   }
 
   return (
