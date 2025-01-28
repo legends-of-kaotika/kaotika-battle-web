@@ -3,7 +3,7 @@ import HeaderContainer from './components/header/HeaderContainer';
 import BattleContainer from './components/battle/BattleContainer';
 import { useState } from 'react';
 import { attackerData, defenderData } from './constants/playersData';
-import battleImage from '/images/battle_bg.jpg';
+import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 
