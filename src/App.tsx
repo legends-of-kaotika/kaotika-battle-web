@@ -10,13 +10,13 @@ import { socket } from './utils/socket';
 import { Player } from './interfaces/Player';
 
 function App() {
+  const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
+  const [players, setPlayers] = useState<Player[]>([]);
+
   const [leftPlayer, setLeftplayer] = useState(attackerData);
   const [rightPlayer, setRightPlayer] = useState(defenderData);
   const [davokarPlayers, setDavokarPlayers] = useState<Player[]>([]);
   const [kaotikaPlayers, setKaotikaPlayers] = useState<Player[]>([]);
-
-  const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
     function onConnect() {
@@ -26,7 +26,6 @@ function App() {
     function onDisconnect() {
       setIsConnected(false);
     }
-
 
     socket.emit('web-sendUsers');
     socket.on('connect', onConnect);
