@@ -7,7 +7,7 @@ interface RightPlayerAttributesInterface {
 const RightPlayerAttributes: React.FC<RightPlayerAttributesInterface> = ({ player }) => {
 
   return (
-    <div className="flex flex-col justify-items-start items-start h-[40%] w-[27%] mr-[2.5%] mt-[5.2%] rounded-md">
+    <div className="flex flex-col justify-items-start items-start h-[40%] w-[27%] mr-[2.5%] mt-[5.6%] rounded-md">
 
       {/* Right Player Life Bar */}
       <RightPlayerLifeBar maxHitpoints={player.maxHitpoints} hitpoints={player.hitpoints}/>
