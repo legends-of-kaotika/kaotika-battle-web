@@ -12,16 +12,18 @@ import { Player } from './interfaces/Player';
 function App() {
   const [leftPlayer, setLeftplayer] = useState(attackerData);
   const [rightPlayer, setRightPlayer] = useState(defenderData);
+  const [davokarPlayers, setDavokarPlayers] = useState<Player[]>([]);
+  const [kaotikaPlayers, setKaotikaPlayers] = useState<Player[]>([]);
 
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
-    function onConnect(){
+    function onConnect() {
       setIsConnected(true);
     }
 
-    function onDisconnect(){
+    function onDisconnect() {
       setIsConnected(false);
     }
 
@@ -46,8 +48,21 @@ function App() {
   }, [isConnected]);
 
   useEffect(() => {
-    console.log(players);
+    filterPlayers(players)
+
+    console.log("DAVOKAR PLAYERS");
+    console.log(davokarPlayers);
+
+    console.log("KAOTIKA PLAYERS");
+    console.log(kaotikaPlayers);
   }, [players]);
+
+  async function filterPlayers(players: Player[]) {
+    const davokar = players.filter(player => player.loyalty === 'betrayer');
+    const kaotika = players.filter(player => player.loyalty === 'loyal');
+    setDavokarPlayers(davokar);
+    setKaotikaPlayers(kaotika);
+  }
 
   return (
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
@@ -59,9 +74,8 @@ function App() {
       />
 
       {/* Header Container */}
-      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
+      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
       <BattleContainer />
-
 
     </div>
   )
