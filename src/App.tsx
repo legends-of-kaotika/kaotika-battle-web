@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { attackerData, defenderData } from './constants/playersData';
 import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
-import Hud from './components/footer/Hud';
+
 
 function App() {
   const [leftPlayer, setLeftplayer] = useState(attackerData);
@@ -24,11 +24,6 @@ function App() {
       <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
       <BattleContainer />
 
-      {/* Footer Container */}
-      <Hud currentPhase='attack' />
-
-      {/* Footer Container */}
-      <Hud currentPhase='attack' />
 
     </div>
   )
