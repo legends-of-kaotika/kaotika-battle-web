@@ -7,7 +7,7 @@ import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
 
 import { socket } from './utils/socket';
-import { Player } from './interfaces/Player';
+import { Player } from './interfaces/player/Player';
 
 function App() {
   const [leftPlayer, setLeftplayer] = useState(attackerData);
@@ -59,9 +59,7 @@ function App() {
 
       {/* Header Container */}
       <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
-      <BattleContainer />
-
-
+      <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
     </div>
   )
 }
