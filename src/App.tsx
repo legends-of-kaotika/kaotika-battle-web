@@ -55,7 +55,7 @@ function App() {
       {/* Background Image */}
       <img src={borderImage}
         alt="Background"
-        className="absolute top-0 left-0 w-full h-full object-cover z-10"
+        className="absolute top-0 left-0 z-10 w-full"
       />
 
       {/* Header Container */}
