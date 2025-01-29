@@ -8,12 +8,14 @@ import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 import { Player } from './Interfaces/Player';
 import useStore from './store/store';
+import WaitingBattle from './components/battle/WaitingBattle';
 
 function App() {
   const leftPlayer= attackerData;
   const rightPlayer = defenderData;
   const { players, addPlayer, socket} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
+  const [startBattle, setStartBattle] = useState<boolean>(true);
 
   useEffect(() => {
     function onConnect() {
@@ -34,6 +36,10 @@ function App() {
 
     // socket.on('connectedUsers', (data : Player[]) => {  
     // });
+
+    socket.on('web-startBattle', () => {
+      setStartBattle(true);
+    });
 
     socket.emit('web-sendSocketId');
 
@@ -63,9 +69,13 @@ function App() {
         className="absolute top-0 left-0 z-10 w-full"
       />
 
+     
+
       {/* Header Container */}
       <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
-      <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
+      {/* Battle Container */}
+      {startBattle && <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />}
+      {!startBattle && <WaitingBattle/>}
 
       {/* Footer Container */}
       <Hud players={players}/>
