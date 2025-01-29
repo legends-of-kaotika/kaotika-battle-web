@@ -3,9 +3,12 @@ import { getPhotoByRole } from "../../utils/getPhotoByRole";
 
 interface OpponentProps {
   player: Player;
+  styles?: string;
 }
 
-const Opponent: React.FC<OpponentProps> = ({ player }) => {
+
+
+const Opponent: React.FC<OpponentProps> = ({ player, styles}) => {
 
   const warriorPhoto = getPhotoByRole(player);
 
@@ -14,12 +17,14 @@ const Opponent: React.FC<OpponentProps> = ({ player }) => {
 
       {warriorPhoto !== '' ? (
         <img src={warriorPhoto}
-          className="h-full w-full object-cover z-0"
+          className={`h-full w-full object-cover z-0 ${styles}`}
+          
         />
       ) : null}
 
     </div>
   )
 }
+
 
 export default Opponent;
