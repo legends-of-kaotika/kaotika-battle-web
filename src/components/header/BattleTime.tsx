@@ -23,7 +23,7 @@ const BattleTime: React.FC<BattleTimeInterface> = ({ }) => {
   }, [timer])
 
   return (
-    <div className="flex h-1/2 w-full rounded-md mt-[1%] text-5xl justify-center items-center">
+    <div className="flex h-1/2 w-full rounded-md mb-[5%] text-5xl justify-center items-center">
       {timer}
     </div>
   );

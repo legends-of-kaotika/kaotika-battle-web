@@ -12,7 +12,7 @@ const RightPlayerAttributes: React.FC<RightPlayerAttributesInterface> = ({ playe
       {/* Right Player Life Bar */}
       <RightPlayerLifeBar maxHitpoints={player.maxHitpoints} hitpoints={player.hitpoints}/>
 
-      <div className="flex h-full w-[65%] ml-auto rounded-md items-center justify-center text-2xl z-20">
+      <div className="flex h-full w-[65%] ml-auto rounded-md items-center justify-center text-3xl z-20">
         {player.nickname}
       </div>
     </div>
