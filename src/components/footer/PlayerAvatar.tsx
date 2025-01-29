@@ -22,7 +22,7 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
 
     const life = Math.min(Math.max(hitpoints, 0), maxHitpoints);
 
-    const lifeDegrees = (life / 100) * lifeTotalDegrees;
+    const lifeDegrees = (life / maxHitpoints) * lifeTotalDegrees;
 
     const bottomColor = isBetrayer ? 'black' : 'orange';
     return {
