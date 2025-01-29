@@ -1,5 +1,5 @@
 import { Player } from "../../Interfaces/Player";
-import { getPhotoByRole } from "../../utils/getPhotoByRole";
+import { getPhotoByRole } from "../../helpers/getPhotoByRole";
 
 interface OpponentProps {
   player: Player;

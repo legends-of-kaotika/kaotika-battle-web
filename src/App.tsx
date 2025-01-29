@@ -7,7 +7,7 @@ import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 
-import { socket } from './utils/socket';
+import { socket } from './helpers/socket';
 import { Player } from './Interfaces/Player';
 
 function App() {
