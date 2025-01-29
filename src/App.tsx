@@ -11,11 +11,12 @@ import { socket } from './utils/socket';
 import { Player } from './Interfaces/Player';
 
 function App() {
-  const [leftPlayer, setLeftplayer] = useState(attackerData);
-  const [rightPlayer, setRightPlayer] = useState(defenderData);
+  const leftPlayer= attackerData;
+  const rightPlayer = defenderData;
 
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [players, setPlayers] = useState<Player[]>([]);
+
 
   useEffect(() => {
     function onConnect() {
@@ -30,11 +31,14 @@ function App() {
     socket.on('disconnect', onDisconnect);
 
     socket.on('web-sendUser', (data: Player) => {
-      console.log("DENTRO DE SEND USER");
-      console.log(data);
-
       setPlayers(prevState => [...prevState, data]);
     });
+
+    socket.on('connectedUsers', (data : Player[]) => {
+      setPlayers(data);
+    });
+
+    socket.emit('web-sendSocketId');
 
     return () => {
       socket.off('connect', onConnect);
@@ -43,6 +47,10 @@ function App() {
       socket.off('web-sendUser');
     }
   }, []);
+
+  useEffect(() => {
+    console.log('Connected to socket server: ' + isConnected);
+  }, [isConnected])
 
   useEffect(() => {
     console.log("PLAYERS: ");

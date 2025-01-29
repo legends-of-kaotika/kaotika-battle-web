@@ -4,6 +4,7 @@ interface Player {
   name: string;
   image: string;
   health: number;
+  isBetrayer: boolean;
 }
 
 interface PlayerProps {
@@ -12,7 +13,7 @@ interface PlayerProps {
 
 const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
 
-  const getBorderStyle = (health: number) => {
+  const getBorderStyle = (health: number, isBetrayer: boolean) => {
     const fixedDegreesStart = 0;
     const fixedDegreesEnd = 180;
     const totalDegrees = 360;
@@ -23,11 +24,13 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
 
     const healthDegrees = (normalizedHealth / 100) * healthTotalDegrees;
 
+    const bottomColor = isBetrayer ? 'black' : 'orange';
     return {
+        
       background: `conic-gradient(
             from 90deg, /* Inicia el gradiente en 90 grados */
-            transparent ${fixedDegreesStart}deg,
-            transparent  ${fixedDegreesEnd}deg,
+             ${bottomColor} ${fixedDegreesStart}deg,
+             ${bottomColor}  ${fixedDegreesEnd}deg,
             red ${fixedDegreesEnd}deg ${fixedDegreesEnd + healthDegrees}deg,
             gray ${fixedDegreesEnd + healthDegrees}deg ${totalDegrees}deg
           )`,
@@ -38,8 +41,8 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
     <div
       className="relative w-18 h-18 rounded-full flex items-center justify-center"
       style={{
-        background: getBorderStyle(player.health).background,
-        padding: '4px',
+        background: getBorderStyle(player.health,player.isBetrayer).background,
+        padding: '6px',
         borderRadius: '50%',
         transition: 'background 0.5s ease',
       }}

@@ -4,7 +4,7 @@ import { EnhancerPotion } from "./EnhancerPotion";
 import { Profile } from "./Profile";
 import { Modifier } from "./Modifier";
 import { Status } from "./Status";
-import { Weapon } from "./Weapon";
+// import { Weapon } from "./Weapon";
 
 export interface Player {
   _id: string;
@@ -18,7 +18,8 @@ export interface Player {
   attributes: Modifier;
   base_attributes: Modifier;
   equipment:{
-    weapon: Weapon,
+    // weapon: Weapon,
+    weapon: string,
     healing_potion: HealingPotion,
     antidote_potion: AntidotePotion,
     enhancer_potion: EnhancerPotion,
