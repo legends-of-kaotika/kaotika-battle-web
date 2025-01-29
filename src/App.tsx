@@ -36,6 +36,8 @@ function App() {
       setPlayers(prevState => [...prevState, data]);
     });
 
+    socket.emit('web-sendSocketId');
+
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
