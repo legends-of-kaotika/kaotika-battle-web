@@ -6,17 +6,14 @@ import { attackerData, defenderData } from './constants/playersData';
 import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
-
-import { socket } from './helpers/socket';
 import { Player } from './Interfaces/Player';
+import useStore from './store/store';
 
 function App() {
   const leftPlayer= attackerData;
   const rightPlayer = defenderData;
-
+  const { players, addPlayer, socket} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [players, setPlayers] = useState<Player[]>([]);
-
 
   useEffect(() => {
     function onConnect() {
@@ -31,12 +28,12 @@ function App() {
     socket.on('disconnect', onDisconnect);
 
     socket.on('web-sendUser', (data: Player) => {
-      setPlayers(prevState => [...prevState, data]);
+      console.log("enter in web-sendUser " + data);
+      addPlayer(data);
     });
 
-    socket.on('connectedUsers', (data : Player[]) => {
-      setPlayers(data);
-    });
+    // socket.on('connectedUsers', (data : Player[]) => {  
+    // });
 
     socket.emit('web-sendSocketId');
 
