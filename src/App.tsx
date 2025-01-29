@@ -7,7 +7,7 @@ import battleImage from '/images/battle_bg.webp';
 import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 
-import { socket } from './utils/socket';
+import { socket } from './helpers/socket';
 import { Player } from './Interfaces/Player';
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
       {/* Background Image */}
       <img src={borderImage}
         alt="Background"
-        className="absolute top-0 left-0 w-full h-full object-cover z-10"
+        className="absolute top-0 left-0 z-10 w-full"
       />
 
       {/* Header Container */}
