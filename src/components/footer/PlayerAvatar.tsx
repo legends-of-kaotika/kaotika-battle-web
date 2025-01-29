@@ -7,16 +7,22 @@ interface PlayerProps {
 
 const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
 
-  const getBorderStyle = (health: number, isBetrayer: boolean) => {
+  console.log(player);
+  
+  const getBorderStyle = (isBetrayer: boolean , maxHitpoints: number, hitpoints: number) => {
+
+    console.log("maxHitpoints: " + maxHitpoints);
+    console.log("Hitpoints: " + hitpoints);
+
     const fixedDegreesStart = 0;
     const fixedDegreesEnd = 180;
     const totalDegrees = 360;
 
-    const healthTotalDegrees = totalDegrees - (fixedDegreesEnd - fixedDegreesStart);
+    const lifeTotalDegrees = totalDegrees - (fixedDegreesEnd - fixedDegreesStart);
 
-    const normalizedHealth = Math.min(Math.max(health, 0), 100);
+    const life = Math.min(Math.max(hitpoints, 0), maxHitpoints);
 
-    const healthDegrees = (normalizedHealth / 100) * healthTotalDegrees;
+    const lifeDegrees = (life / 100) * lifeTotalDegrees;
 
     const bottomColor = isBetrayer ? 'black' : 'orange';
     return {
@@ -25,8 +31,8 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
             from 90deg, /* Inicia el gradiente en 90 grados */
              ${bottomColor} ${fixedDegreesStart}deg,
              ${bottomColor}  ${fixedDegreesEnd}deg,
-            red ${fixedDegreesEnd}deg ${fixedDegreesEnd + healthDegrees}deg,
-            gray ${fixedDegreesEnd + healthDegrees}deg ${totalDegrees}deg
+            red ${fixedDegreesEnd}deg ${fixedDegreesEnd + lifeDegrees}deg,
+            gray ${fixedDegreesEnd + lifeDegrees}deg ${totalDegrees}deg
           )`,
     };
   };
@@ -35,7 +41,7 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
     <div
       className="relative w-18 h-18 rounded-full flex items-center justify-center"
       style={{
-        background: getBorderStyle(player.attributes.hit_points,player.isBetrayer).background,
+        background: getBorderStyle(player.isBetrayer,player.base_attributes.hit_points,player.attributes.hit_points).background,
         padding: '6px',
         borderRadius: '50%',
         transition: 'background 0.5s ease',
