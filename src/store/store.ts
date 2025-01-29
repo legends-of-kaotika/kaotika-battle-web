@@ -8,7 +8,9 @@ const SERVER_URL = 'https://kaotika-battle-server.onrender.com';
 const useStore = create<AppState>()((set) => ({
     players: [],
     addPlayer: (player) => set((state) => ({players : [...state.players, player]})),
-    socket: io(SERVER_URL)
+    socket: io(SERVER_URL),
+    round: 1,
+    addRound: (by) => set((state) => ({ round: state.round += by}))
 }));
 
 export default useStore;
