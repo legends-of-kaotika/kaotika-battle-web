@@ -71,7 +71,7 @@ function App() {
       <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
 
       {/* Footer Container */}
-      <Hud />
+      <Hud players={players}/>
     </div>
 
 

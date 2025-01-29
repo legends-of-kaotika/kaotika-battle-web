@@ -4,7 +4,7 @@ import { EnhancerPotion } from "./EnhancerPotion";
 import { Profile } from "./Profile";
 import { Modifier } from "./Modifier";
 import { Status } from "./Status";
-import { Weapon } from "./Weapon";
+// import { Weapon } from "./Weapon";
 
 export interface Player {
   _id: string;
