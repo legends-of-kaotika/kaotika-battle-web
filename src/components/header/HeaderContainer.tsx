@@ -12,7 +12,7 @@ interface HeaderInfoContainer {
 const HeaderContainer: React.FC<HeaderInfoContainer> = ({ leftPlayer, rightPlayer }) => {
 
   return (
-    <div className="relative flex flex-row w-full h-[30%] justify-between rounded-md">
+    <div className="relative flex flex-row w-full h-[25%] justify-between rounded-md pt-[0.9%]">
 
       {/* Left Player Avatar */}
       <LeftPlayerAvatar
