@@ -1,11 +1,15 @@
 import { Player } from "../Interfaces/Player";
 
-export function getPhotoByRole(player: Player) : string{
+export function getPhotoByRole(player: Player): string {
     const role = player.profile?.name;
-    let image; 
-    
-    switch(role){
+    let image;
+
+    switch (role) {
         case "Juggler":
+            image = '/images/Warrior1.png';
+            break;
+
+        case "Pariah":
             image = '/images/Warrior1.png';
             break;
 
@@ -13,7 +17,7 @@ export function getPhotoByRole(player: Player) : string{
             image = '/images/Warrior1.png';
             break;
         default:
-            throw Error('no image per role');
+            image = ''
     }
 
     return image;
