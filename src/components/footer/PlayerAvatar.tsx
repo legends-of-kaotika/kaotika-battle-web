@@ -1,11 +1,5 @@
 import React from 'react';
-
-interface Player {
-  name: string;
-  image: string;
-  health: number;
-  isBetrayer: boolean;
-}
+import { Player } from '../../Interfaces/Player';
 
 interface PlayerProps {
   player: Player;
@@ -41,14 +35,14 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
     <div
       className="relative w-18 h-18 rounded-full flex items-center justify-center"
       style={{
-        background: getBorderStyle(player.health,player.isBetrayer).background,
+        background: getBorderStyle(player.attributes.hit_points,player.isBetrayer).background,
         padding: '6px',
         borderRadius: '50%',
         transition: 'background 0.5s ease',
       }}
     >
       <img
-        src={player.image}
+        src={player.avatar}
         alt={player.name}
         className="w-full h-full rounded-full object-cover"
       />

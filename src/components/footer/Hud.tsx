@@ -1,209 +1,24 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import PlayerAvatar from './PlayerAvatar';
+import { Player} from '../../Interfaces/Player';
 
-interface Player {
-  name: string;
-  image: string;
-  health: number;
-  isBetrayer: boolean;
+interface HudProps {
+  players: Player[];
 }
 
-const Hud: React.FC = () => {
-  const betrayer: Player[] = [
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: true,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: true,
-    },
+const Hud: React.FC<HudProps> = ({players}) => {
 
-  ];
+  const [loyal,setLoyal] = useState<Player[]>([]);
+  const [betrayer,setBetrayer] = useState<Player[]>([]);
 
-  const loyal: Player[] = [
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 90,
-      isBetrayer: false,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 100,
-      isBetrayer: false,
-    },
-    {
-      name: 'The Chinese',
-      image: '../../../public/images/ander.png',
-      health: 35,
-      isBetrayer: false,
-    },
-    {
-      name: 'Miguel Angel',
-      image: '../../../public/images/miguel_angel.png',
-      health: 50,
-      isBetrayer: false,
-    },
-  ];
+  useEffect(() => {
+    const betrayers = players.filter(player => player.isBetrayer);
+    const loyals = players.filter(player => !player.isBetrayer);
 
-
-
+    setBetrayer(betrayers);
+    setLoyal(loyals);
+  }, [players]);
+  
   return (
 
     <div>
