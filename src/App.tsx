@@ -8,11 +8,12 @@ import Hud from './components/footer/Hud';
 import { Player } from './Interfaces/Player';
 import useStore from './store/store';
 import WaitingBattle from './components/battle/WaitingBattle';
+import getPlayerById from './helpers/getPlayerById';
 
 function App() {
   const leftPlayer = attackerData;
   const rightPlayer = defenderData;
-  const { players, addPlayer, socket, setPlayers} = useStore();
+  const { players, addPlayer, socket, setPlayers, setDefender} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
 
@@ -44,12 +45,17 @@ function App() {
     socket.emit('web-sendSocketId');
     socket.emit('web-sendUsers');
 
+    socket.on('web-setSelectedPlayer', (id : string) => {
+      setDefender(getPlayerById(players, id)!);
+    });
+
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
       socket.off('connectedUsers');
       socket.off('web-sendUser');
       socket.off('web-startBattle');
+      socket.off('web-setSelectedPlayer');
     }
   }, []);
 
