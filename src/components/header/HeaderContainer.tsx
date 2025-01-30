@@ -1,16 +1,20 @@
-import LeftPlayerAttributes from "./LeftPlayerAttributesContainer";
-import LeftPlayerAvatar from "./LeftPlayerAvatarContainer";
-import RightPlayerAttributes from "./RightPlayerAttributesContainer";
+import { useEffect } from "react";
+import useStore from "../../store/store";
+import LeftPlayerAttributes from "./LeftPlayerAttributes";
+import LeftPlayerAvatar from "./LeftPlayerAvatar";
+import RightPlayerAttributes from "./RightPlayerAttributes";
 import RightPlayerAvatar from "./RightPlayerAvatar";
 import RoundContainer from "./RoundContainer";
 import borderImage from '/images/header_border.png';
+import { attackerData, defenderData } from "../../constants/playersData";
 
-interface HeaderInfoContainer {
-  leftPlayer: any,
-  rightPlayer: any,
-}
+const HeaderContainer: React.FC = () => {
+  const { attacker, setAttacker, defender, setDefender } = useStore();
 
-const HeaderContainer: React.FC<HeaderInfoContainer> = ({ leftPlayer, rightPlayer }) => {
+  useEffect(() => {
+    setAttacker(attackerData);
+    setDefender(defenderData);
+  }, [])
 
   return (
     <div className="relative flex flex-row w-full h-[25%] justify-between rounded-md pt-[0.9%]">
@@ -23,12 +27,12 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ leftPlayer, rightPlaye
 
       {/* Left Player Avatar */}
       <LeftPlayerAvatar
-        player={leftPlayer}
+      player={attacker!}
       />
 
       {/* Left Player Attributes */}
       <LeftPlayerAttributes
-        player={leftPlayer}
+        player={attacker!}
       />
 
       {/* Round Container */}
@@ -36,12 +40,12 @@ const HeaderContainer: React.FC<HeaderInfoContainer> = ({ leftPlayer, rightPlaye
 
       {/* Right Player Attributes */}
       <RightPlayerAttributes
-        player={rightPlayer}
+        player={defender!}
       />
 
       {/* Right Player Avatar */}
       <RightPlayerAvatar
-        player={rightPlayer}
+        player={defender!}
       />
 
     </div>
