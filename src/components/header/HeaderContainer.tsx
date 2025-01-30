@@ -24,6 +24,7 @@ const HeaderContainer: React.FC = () => {
 
       {/* Left Player Avatar */}
       <LeftPlayerAvatar
+      player={attacker!}
       />
 
       {/* Left Player Attributes */}
