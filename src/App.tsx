@@ -9,6 +9,8 @@ import { Player } from './Interfaces/Player';
 import useStore from './store/store';
 import WaitingBattle from './components/battle/WaitingBattle';
 import getPlayerById from './helpers/getPlayerById';
+import updatePlayerById from './helpers/updatePlayerById';
+import { Modifier } from './Interfaces/Modifier';
 
 function App() {
   const leftPlayer= attackerData;
@@ -49,6 +51,12 @@ function App() {
       setDefender(getPlayerById(players, id)!);
     });
 
+    socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
+      console.log('updatea Player');
+      console.log("daño: " + totalDamage)
+      setPlayers(updatePlayerById(players, id, attr));
+    });
+
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
@@ -56,6 +64,7 @@ function App() {
       socket.off('web-sendUser');
       socket.off('web-startBattle');
       socket.off('web-setSelectedPlayer');
+      socket.off('updatePlayer');
     }
   }, []);
 
@@ -66,6 +75,7 @@ function App() {
   useEffect(() => {
     console.log("PLAYERS: ");
     console.log(players);
+  
   }, [players]);
 
   return (

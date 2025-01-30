@@ -6,11 +6,12 @@ interface BattleContainerProps {
     rightPlayer: Player;
 }
 
-const BattleContainer: React.FC<BattleContainerProps> = ({leftPlayer, rightPlayer}) => {
+const BattleContainer: React.FC<BattleContainerProps> = ({ leftPlayer, rightPlayer }) => {
+
     return (
         <div className="w-[100%] h-[50%] flex -mt-[5%] justify-around">
             <PotionContainer></PotionContainer>
-            <Battle leftPlayer={leftPlayer} rightPlayer={rightPlayer}/>
+            <Battle leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
         </div>
     )
 }
