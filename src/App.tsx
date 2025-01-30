@@ -10,7 +10,6 @@ import useStore from './store/store';
 import WaitingBattle from './components/battle/WaitingBattle';
 import getPlayerById from './helpers/getPlayerById';
 import updatePlayerById from './helpers/updatePlayerById';
-import { Modifier } from './Interfaces/Modifier';
 
 function App() {
   const leftPlayer= attackerData;
