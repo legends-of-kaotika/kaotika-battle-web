@@ -4,7 +4,6 @@ import BattleContainer from './components/battle/BattleContainer';
 import { useEffect, useState } from 'react';
 import { attackerData, defenderData } from './constants/playersData';
 import battleImage from '/images/battle_bg.webp';
-import borderImage from '/images/header_border.png';
 import Hud from './components/footer/Hud';
 import { Player } from './Interfaces/Player';
 import useStore from './store/store';
@@ -63,22 +62,15 @@ function App() {
   return (
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
 
-      {/* Background Image */}
-      <img src={borderImage}
-        alt="Background"
-        className="absolute top-0 left-0 z-10 w-full"
-      />
-
-     
-
       {/* Header Container */}
       <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
+
       {/* Battle Container */}
-      {startBattle && <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />}
-      {!startBattle && <WaitingBattle/>}
+      {startBattle ? <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} /> : <WaitingBattle/>}
 
       {/* Footer Container */}
       <Hud players={players}/>
+      
     </div>
 
 
