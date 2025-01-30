@@ -42,12 +42,14 @@ function App() {
     });
 
     socket.emit('web-sendSocketId');
+    socket.emit('web-sendUsers');
 
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
       socket.off('connectedUsers');
       socket.off('web-sendUser');
+      socket.off('web-startBattle');
     }
   }, []);
 
