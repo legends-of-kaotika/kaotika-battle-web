@@ -12,4 +12,5 @@ export interface AppState{
     defender: Player | null;
     setAttacker: (attacker : Player) => void;
     setDefender: (defender: Player) => void;
+    setPlayers: (players: Player[]) => void;
 }

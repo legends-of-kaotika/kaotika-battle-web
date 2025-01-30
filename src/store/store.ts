@@ -23,6 +23,7 @@ const useStore = create<AppState>()((set) => ({
     defender: null,
     setAttacker: (attacker: Player) => set(() => ({attacker : attacker})),
     setDefender: (defender: Player) => set(() => ({defender: defender})),
+    setPlayers: (players: Player[]) => set(() => ({ players : players}))
 }));
 
 export default useStore;

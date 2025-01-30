@@ -12,7 +12,7 @@ import WaitingBattle from './components/battle/WaitingBattle';
 function App() {
   const leftPlayer= attackerData;
   const rightPlayer = defenderData;
-  const { players, addPlayer, socket} = useStore();
+  const { players, addPlayer, socket, setPlayers} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
 
@@ -33,20 +33,23 @@ function App() {
       addPlayer(data);
     });
 
-    // socket.on('connectedUsers', (data : Player[]) => {  
-    // });
+    socket.on('connectedUsers', (data : Player[]) => {
+      setPlayers(data);
+    });
 
     socket.on('web-startBattle', () => {
       setStartBattle(true);
     });
 
     socket.emit('web-sendSocketId');
+    socket.emit('web-sendUsers');
 
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
       socket.off('connectedUsers');
       socket.off('web-sendUser');
+      socket.off('web-startBattle');
     }
   }, []);
 
