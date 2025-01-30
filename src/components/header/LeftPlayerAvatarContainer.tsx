@@ -1,5 +1,7 @@
+import { Player } from "../../Interfaces/Player";
+
 interface LeftPlayerAvatarInterface {
-  player: any
+  player: Player
 }
 
 const LeftPlayerAvatar: React.FC<LeftPlayerAvatarInterface> = ({ player }) => {

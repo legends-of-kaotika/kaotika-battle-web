@@ -70,7 +70,7 @@ function App() {
       />
 
       {/* Header Container */}
-      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
+      <HeaderContainer/>
       {/* Battle Container */}
       {startBattle && <BattleContainer />}
       {!startBattle && <WaitingBattle />}
