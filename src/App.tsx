@@ -2,7 +2,6 @@ import './App.css';
 import HeaderContainer from './components/header/HeaderContainer';
 import BattleContainer from './components/battle/BattleContainer';
 import { useEffect, useState } from 'react';
-import { attackerData, defenderData } from './constants/playersData';
 import battleImage from '/images/battle_bg.webp';
 import Hud from './components/footer/Hud';
 import { Player } from './Interfaces/Player';
@@ -12,8 +11,8 @@ import getPlayerById from './helpers/getPlayerById';
 import updatePlayerById from './helpers/updatePlayerById';
 
 function App() {
-  const leftPlayer= attackerData;
-  const rightPlayer = defenderData;
+  // const leftPlayer = attackerData;
+  // const rightPlayer = defenderData;
   const { players, addPlayer, socket, setPlayers, setDefender} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
@@ -81,14 +80,13 @@ function App() {
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
 
       {/* Header Container */}
-      <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
-
+      <HeaderContainer/>
       {/* Battle Container */}
-      {startBattle ? <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} /> : <WaitingBattle/>}
+      {startBattle && <BattleContainer />}
+      {!startBattle && <WaitingBattle />}
 
       {/* Footer Container */}
-      <Hud players={players}/>
-      
+      <Hud players={players} />
     </div>
 
 

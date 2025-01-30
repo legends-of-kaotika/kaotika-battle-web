@@ -10,7 +10,7 @@ export interface AppState{
     attack: (hit_points: number) => void;
     attacker: Player | null;
     defender: Player | null;
-    setAttacker: (attacker : Player) => void;
-    setDefender: (defender: Player) => void;
+    setAttacker: (attacker : Player | null) => void;
+    setDefender: (defender: Player | null) => void;
     setPlayers: (players: Player[]) => void;
 }
