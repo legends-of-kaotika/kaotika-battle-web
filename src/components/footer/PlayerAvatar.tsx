@@ -6,6 +6,7 @@ interface PlayerProps {
 }
 
 const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
+  
   const getBorderStyle = (isBetrayer: boolean , maxHitpoints: number, hitpoints: number) => {
 
     const fixedDegreesStart = 0;
