@@ -12,11 +12,11 @@ const Hud: React.FC<HudProps> = ({players}) => {
   const [betrayer,setBetrayer] = useState<Player[]>([]);
 
   useEffect(() => {
-    const betrayers = players.filter(player => player.isBetrayer);
-    const loyals = players.filter(player => !player.isBetrayer);
+    // const betrayers = players.filter(player => player.isBetrayer);
+    // const loyals = players.filter(player => !player.isBetrayer);
 
-    setBetrayer(betrayers);
-    setLoyal(loyals);
+    // setBetrayer(betrayers);
+    // setLoyal(loyals);
   }, [players]);
   
   return (

@@ -13,4 +13,6 @@ export interface AppState{
     setAttacker: (attacker : Player) => void;
     setDefender: (defender: Player) => void;
     setPlayers: (players: Player[]) => void;
+    timer: number;
+    setTimer: (timer: number) => void;
 }

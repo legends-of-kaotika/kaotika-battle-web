@@ -9,13 +9,15 @@ import { Player } from './Interfaces/Player';
 import useStore from './store/store';
 import WaitingBattle from './components/battle/WaitingBattle';
 import getPlayerById from './helpers/getPlayerById';
+import FinishTurn from './components/battle/finishTurn';
 
 function App() {
-  const leftPlayer= attackerData;
+  const leftPlayer = attackerData;
   const rightPlayer = defenderData;
-  const { players, addPlayer, socket, setPlayers, setDefender} = useStore();
+  const { players, addPlayer, socket, setPlayers, setDefender, timer} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
+  const [finishTurn, setFinishTurn] = useState<boolean>(false);
 
   useEffect(() => {
     function onConnect() {
@@ -38,7 +40,7 @@ function App() {
       setPlayers(data);
     });
 
-    socket.on('web-startBattle', () => {
+    socket.on('gameStart', () => {
       setStartBattle(true);
     });
 
@@ -54,7 +56,7 @@ function App() {
       socket.off('disconnect', onDisconnect);
       socket.off('connectedUsers');
       socket.off('web-sendUser');
-      socket.off('web-startBattle');
+      socket.off('gameStart');
       socket.off('web-setSelectedPlayer');
     }
   }, []);
@@ -68,6 +70,15 @@ function App() {
     console.log(players);
   }, [players]);
 
+  
+  const finishTurnHandler = () => {
+    socket.emit('turn_end');
+    setFinishTurn(true);  
+  }
+  if(timer === 0){
+    finishTurnHandler();
+  }
+ 
   return (
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
 
@@ -76,6 +87,8 @@ function App() {
 
       {/* Battle Container */}
       {startBattle ? <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} /> : <WaitingBattle/>}
+
+      {finishTurn && <FinishTurn/>}
 
       {/* Footer Container */}
       <Hud players={players}/>
