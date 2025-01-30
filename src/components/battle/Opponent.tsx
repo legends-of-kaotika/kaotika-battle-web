@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Player } from "../../Interfaces/Player";
 import { getPhotoByRole } from "../../helpers/getPhotoByRole";
 
@@ -9,8 +10,14 @@ interface OpponentProps {
 
 
 const Opponent: React.FC<OpponentProps> = ({ player, styles}) => {
+  const [warriorPhoto, setWarriorPhoto] = useState<string>('');
 
-  const warriorPhoto = getPhotoByRole(player);
+  useEffect(() => {
+    if(player !== null){
+      const warriorPhoto = getPhotoByRole(player);
+      setWarriorPhoto(warriorPhoto);
+    }
+  }, [player]);
 
   return (
     <div className="w-[45%] h-[90%] mr-[5%] mt-[15%]">
