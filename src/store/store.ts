@@ -21,9 +21,13 @@ const useStore = create<AppState>()((set) => ({
     })),
     attacker: null,
     defender: null,
+
     setAttacker: (attacker: Player | null) => set(() => ({attacker : attacker})),
     setDefender: (defender: Player | null) => set(() => ({defender: defender})),
-    setPlayers: (players: Player[]) => set(() => ({ players : players}))
+    setPlayers: (players: Player[]) => set(() => ({ players : players})),
+    timer: 30,
+    setTimer: (timer: number) => set((state) => ({timer : state.timer -= timer})),
+
 }));
 
 export default useStore;
