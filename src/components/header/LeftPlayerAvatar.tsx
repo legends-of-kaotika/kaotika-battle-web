@@ -1,4 +1,5 @@
 import { Player } from "../../Interfaces/Player";
+import defaultAvatar from "/images/default_avatar.png";
 interface LeftPlayerAttributesInterface {
   player: Player,
 }
@@ -13,7 +14,10 @@ const LeftPlayerAvatar: React.FC<LeftPlayerAttributesInterface> = ({ player }) =
           alt="Player Avatar"
           className="h-full w-full object-cover z-0 rounded-[100%]"
         />
-      ) : null}
+      ) : <img src={defaultAvatar}
+        alt="Default Avatar"
+        className="h-full w-full object-cover z-0 rounded-[100%]"
+      />}
     </div>
   );
 };

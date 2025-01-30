@@ -11,5 +11,5 @@ export interface AppState{
     attacker: Player | null;
     defender: Player | null;
     setAttacker: (attacker : Player | null) => void;
-    setDefender: (defender: Player) => void;
+    setDefender: (defender: Player | null) => void;
 }

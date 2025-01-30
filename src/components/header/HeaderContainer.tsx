@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import useStore from "../../store/store";
-import LeftPlayerAttributes from "./LeftPlayerAttributesContainer";
-import LeftPlayerAvatar from "./LeftPlayerAvatarContainer";
-import RightPlayerAttributes from "./RightPlayerAttributesContainer";
+import LeftPlayerAttributes from "./LeftPlayerAttributes";
+import LeftPlayerAvatar from "./LeftPlayerAvatar";
+import RightPlayerAttributes from "./RightPlayerAttributes";
 import RightPlayerAvatar from "./RightPlayerAvatar";
 import RoundContainer from "./RoundContainer";
 import { attackerData, defenderData } from "../../constants/playersData";
@@ -11,13 +11,9 @@ const HeaderContainer: React.FC = () => {
   const { attacker, setAttacker, defender, setDefender } = useStore();
 
   useEffect(() => {
-    setAttacker(null);
+    setAttacker(attackerData);
     setDefender(defenderData);
   }, [])
-
-  if ((attacker || defender) === null) {
-    return null;
-  }
 
   return (
     <div className="relative flex flex-row w-full h-[25%] justify-between rounded-md pt-[0.9%]">
