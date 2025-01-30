@@ -11,7 +11,7 @@ const HeaderContainer: React.FC = () => {
   const { attacker, setAttacker, defender, setDefender } = useStore();
 
   useEffect(() => {
-    setAttacker(attackerData);
+    setAttacker(null);
     setDefender(defenderData);
   }, [])
 
@@ -24,7 +24,6 @@ const HeaderContainer: React.FC = () => {
 
       {/* Left Player Avatar */}
       <LeftPlayerAvatar
-        player={attacker!}
       />
 
       {/* Left Player Attributes */}

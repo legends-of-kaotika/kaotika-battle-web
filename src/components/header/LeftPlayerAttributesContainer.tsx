@@ -14,11 +14,14 @@ const LeftPlayerAttributes: React.FC<LeftPlayerAttributesInterface> = ({ player 
 
       {player !== null ? (
         <LeftPlayerLifeBar maxHitpoints={player.base_attributes.hit_points} hitpoints={player.attributes.hit_points} />
-      ) : null}
+      ) : <LeftPlayerLifeBar maxHitpoints={1} hitpoints={0} />}
 
-      <div className="flex h-full w-[65%] items-center justify-center text-3xl z-20 pb-[6%]">
-        {player.nickname}
-      </div>
+      {player !== null ? (
+        <div className="flex h-full w-[65%] items-center justify-center text-3xl z-20 pb-[6%]">
+          {player.nickname}
+        </div>
+      ) : <div className="flex h-full w-[65%] items-center justify-center text-3xl z-20 pb-[6%]"></div>}
+
     </div>
   );
 };

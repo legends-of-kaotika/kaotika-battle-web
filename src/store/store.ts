@@ -21,7 +21,7 @@ const useStore = create<AppState>()((set) => ({
     })),
     attacker: null,
     defender: null,
-    setAttacker: (attacker: Player) => set(() => ({attacker : attacker})),
+    setAttacker: (attacker: Player | null) => set(() => ({attacker : attacker})),
     setDefender: (defender: Player) => set(() => ({defender: defender})),
 }));
 
