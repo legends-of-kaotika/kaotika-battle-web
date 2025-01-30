@@ -1,13 +1,8 @@
-import { Player } from "../../Interfaces/Player";
 import useStore from "../../store/store";
 import Opponent from "./Opponent";
 
-interface BattleProp{
-  leftPlayer: Player;
-  rightPlayer: Player
-}
 
-const Battle: React.FC<BattleProp> = ({}) => {
+const Battle: React.FC = () => {
 
   const { attacker, defender } = useStore();
 

@@ -11,9 +11,9 @@ import useStore from './store/store';
 import WaitingBattle from './components/battle/WaitingBattle';
 
 function App() {
-  const leftPlayer= attackerData;
+  const leftPlayer = attackerData;
   const rightPlayer = defenderData;
-  const { players, addPlayer, socket} = useStore();
+  const { players, addPlayer, socket } = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
 
@@ -69,16 +69,14 @@ function App() {
         className="absolute top-0 left-0 z-10 w-full"
       />
 
-     
-
       {/* Header Container */}
       <HeaderContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />
       {/* Battle Container */}
-      {startBattle && <BattleContainer leftPlayer={leftPlayer} rightPlayer={rightPlayer} />}
-      {!startBattle && <WaitingBattle/>}
+      {startBattle && <BattleContainer />}
+      {!startBattle && <WaitingBattle />}
 
       {/* Footer Container */}
-      <Hud players={players}/>
+      <Hud players={players} />
     </div>
 
 
