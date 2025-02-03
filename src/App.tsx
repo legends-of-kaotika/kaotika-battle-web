@@ -15,7 +15,7 @@ import { PlayersRole } from './Interfaces/PlayerRole';
 function App() {
   const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [startBattle, setStartBattle] = useState<boolean>(true);
+  const [startBattle, setStartBattle] = useState<boolean>(false);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
 
   useEffect(() => {
@@ -56,9 +56,10 @@ function App() {
     });
 
     socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
-      console.log('updatea Player');
       console.log("daño: " + totalDamage)
       setPlayers(updatePlayerById(players, id, attr));
+      socket.emit('turn_end');
+      setFinishTurn(true);
     });
 
     socket.on('assign-turn', (data: Player) => {
