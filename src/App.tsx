@@ -12,7 +12,8 @@ import updatePlayerById from './helpers/updatePlayerById';
 import FinishTurn from './components/battle/finishTurn';
 
 function App() {
-  const { players, addPlayer, socket, setPlayers, setDefender, timer} = useStore();
+
+  const { players, addPlayer, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
@@ -53,6 +54,10 @@ function App() {
       console.log('updatea Player');
       console.log("daño: " + totalDamage)
       setPlayers(updatePlayerById(players, id, attr));
+    });
+
+    socket.on('assign-turn', (data: Player) => {
+      setAttacker(data);
     });
 
     return () => {
