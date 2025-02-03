@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import BattleContainer from "./components/battle/BattleContainer";
+import BattleContainer from './components/battle/BattleContainer';
 import FinishTurn from './components/battle/finishTurn';
 import WaitingBattle from './components/battle/WaitingBattle';
 import Hud from './components/footer/Hud';
@@ -31,7 +31,7 @@ function App() {
     socket.on('disconnect', onDisconnect);
 
     socket.on('web-sendUser', (data: Player) => {
-      console.log("enter in web-sendUser " + data);
+      console.log('enter in web-sendUser ' + data);
       addPlayer(data);
     });
 
@@ -52,7 +52,7 @@ function App() {
 
     socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
       console.log('updatea Player');
-      console.log("daño: " + totalDamage);
+      console.log('daño: ' + totalDamage);
       setPlayers(updatePlayerById(players, id, attr));
     });
 
@@ -69,14 +69,14 @@ function App() {
       socket.off('web-setSelectedPlayer');
       socket.off('updatePlayer');
     };
-  }, []);
+  }, [addPlayer, players, setAttacker, setDefender, setPlayers, socket]);
 
   useEffect(() => {
     console.log('Connected to socket server: ' + isConnected);
   }, [isConnected]);
 
   useEffect(() => {
-    console.log("PLAYERS: ");
+    console.log('PLAYERS: ');
     console.log(players);
 
   }, [players]);
@@ -91,7 +91,9 @@ function App() {
   }
 
   return (
-    <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
+    <div
+      className='w-screen h-screen bg-center bg-cover'
+      style={{ backgroundImage: `url(${battleImage})` }}>
 
       {/* Header Container */}
       <HeaderContainer />

@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import useStore from "../../store/store";
-import LeftPlayerAttributes from "./LeftPlayerAttributes";
-import LeftPlayerAvatar from "./LeftPlayerAvatar";
-import RightPlayerAttributes from "./RightPlayerAttributes";
-import RightPlayerAvatar from "./RightPlayerAvatar";
-import RoundContainer from "./RoundContainer";
+import { useEffect } from 'react';
+import { attackerData, defenderData } from '../../constants/playersData';
+import useStore from '../../store/store';
+import LeftPlayerAttributes from './LeftPlayerAttributes';
+import LeftPlayerAvatar from './LeftPlayerAvatar';
+import RightPlayerAttributes from './RightPlayerAttributes';
+import RightPlayerAvatar from './RightPlayerAvatar';
+import RoundContainer from './RoundContainer';
 import borderImage from '/images/header_border.png';
-import { attackerData, defenderData } from "../../constants/playersData";
 
 const HeaderContainer: React.FC = () => {
   const { attacker, setAttacker, defender, setDefender } = useStore();
@@ -14,13 +14,14 @@ const HeaderContainer: React.FC = () => {
   useEffect(() => {
     setAttacker(attackerData);
     setDefender(defenderData);
-  }, [])
+  }, []);
 
   return (
     <div className="relative flex flex-row w-full h-[25%] justify-between rounded-md pt-[0.9%]">
 
       {/* Border Image */}
-      <img src={borderImage}
+      <img
+        src={borderImage}
         alt="Border Image"
         className="absolute top-0 left-0 z-10 w-full"
       />
@@ -32,7 +33,7 @@ const HeaderContainer: React.FC = () => {
 
       {/* Left Player Attributes */}
       <LeftPlayerAttributes
-      player={attacker!}
+        player={attacker!}
       />
 
       {/* Round Container */}
