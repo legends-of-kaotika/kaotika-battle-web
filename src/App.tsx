@@ -86,14 +86,12 @@ function App() {
 
   }, [players]);
 
-
-  const finishTurnHandler = () => {
-    socket.emit('turn_end');
-    setFinishTurn(true);
-  }
-  if (timer === 0) {
-    finishTurnHandler();
-  }
+  useEffect(() => {
+    if (timer === 0) {
+      socket.emit('turn_end');
+      setFinishTurn(true);
+    }
+  }, [timer]);
 
   return (
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
