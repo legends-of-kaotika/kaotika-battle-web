@@ -1,6 +1,6 @@
-import antidote from '../../public/images/antidote_1.png';
-import enhancer from '../../public/images/enhancer_2.png';
-import healing from '../../public/images/healing_3.png';
+import antidote from '/images/antidote_1.png';
+import enhancer from '/images/enhancer_2.png';
+import healing from '/images/healing_3.png';
 import { HealingPotion } from '../../src/Interfaces/HealingPotion';
 import { AntidotePotion } from '../../src/Interfaces/AntidotePotion';
 import { EnhancerPotion } from '../../src/Interfaces/EnhancerPotion';
