@@ -10,10 +10,10 @@ import WaitingBattle from './components/battle/WaitingBattle';
 import getPlayerById from './helpers/getPlayerById';
 import updatePlayerById from './helpers/updatePlayerById';
 import FinishTurn from './components/battle/finishTurn';
+import { PlayersRole } from './Interfaces/PlayerRole';
 
 function App() {
-
-  const { players, addPlayer, socket, setPlayers, setDefender, timer, setAttacker } = useStore();
+  const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
@@ -32,10 +32,15 @@ function App() {
 
     socket.on('web-sendUser', (data: Player) => {
       console.log("enter in web-sendUser " + data);
-      addPlayer(data);
+      if(data.isBetrayer){
+        addDravocar(data);
+      }else{
+        addKaotika(data);
+      }    
     });
 
-    socket.on('connectedUsers', (data: Player[]) => {
+    socket.on('connectedUsers', (data : PlayersRole) => {
+
       setPlayers(data);
     });
 
@@ -102,7 +107,7 @@ function App() {
       {finishTurn && <FinishTurn />}
 
       {/* Footer Container */}
-      <Hud players={players} />
+      <Hud />
     </div>
 
 
