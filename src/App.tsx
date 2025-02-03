@@ -11,9 +11,7 @@ import getPlayerById from './helpers/getPlayerById';
 import updatePlayerById from './helpers/updatePlayerById';
 
 function App() {
-  // const leftPlayer = attackerData;
-  // const rightPlayer = defenderData;
-  const { players, addPlayer, socket, setPlayers, setDefender} = useStore();
+  const { players, addPlayer, socket, setPlayers, setDefender, setAttacker} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(true);
 
@@ -53,6 +51,10 @@ function App() {
       console.log('updatea Player');
       console.log("daño: " + totalDamage)
       setPlayers(updatePlayerById(players, id, attr));
+    });
+
+    socket.on('assign-turn', (data: Player) => {
+      setAttacker(data);
     });
 
     return () => {
