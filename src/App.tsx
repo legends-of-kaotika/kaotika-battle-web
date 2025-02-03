@@ -58,7 +58,7 @@ function App() {
     socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
       console.log("daño: " + totalDamage)
       setPlayers(updatePlayerById(players, id, attr));
-      socket.emit('turn_end');
+      socket.emit('web-turnEnd');
       setFinishTurn(true);
     });
 
@@ -89,7 +89,7 @@ function App() {
 
   useEffect(() => {
     if (timer === 0) {
-      socket.emit('turn_end');
+      socket.emit('web-turnEnd');
       setFinishTurn(true);
     }
   }, [timer]);
