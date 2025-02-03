@@ -15,7 +15,7 @@ import { PlayersRole } from './Interfaces/PlayerRole';
 function App() {
   const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [startBattle, setStartBattle] = useState<boolean>(false);
+  const [startBattle, setStartBattle] = useState<boolean>(true);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
 
   useEffect(() => {
@@ -98,12 +98,12 @@ function App() {
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
 
       {/* Header Container */}
-      <HeaderContainer />
+      {startBattle && <HeaderContainer />}
       {/* Battle Container */}
       {startBattle && <BattleContainer />}
       {!startBattle && <WaitingBattle />}
 
-      {finishTurn && <FinishTurn />}
+      {finishTurn && startBattle && <FinishTurn />}
 
       {/* Footer Container */}
       <Hud />
