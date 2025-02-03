@@ -1,4 +1,4 @@
-import { Player } from "../../Interfaces/Player";
+import { Player } from '../../Interfaces/Player';
 import LeftPlayerLifeBar from "./LeftPlayerLifeBar";
 
 interface LeftPlayerAttributesInterface {
