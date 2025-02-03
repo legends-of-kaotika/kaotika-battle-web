@@ -1,7 +1,14 @@
 import { Player } from "../Interfaces/Player";
+import { PlayersRole } from "../Interfaces/PlayerRole";
 
-export default function updatePlayerById(players: Player[], id: string, changes: Partial<Player>) : Player[]{
-    console.log('entra a la funcion');
-    return players.map(player => player._id === id ? {...player, ...changes} : player);
+export default function updatePlayerById(players: PlayersRole, id: string, changes: Partial<Player>) : PlayersRole{
+
+    const allPlayers = [...players.dravocar, ...players.kaotika];
+     allPlayers.map(player => player._id === id ? {...player, ...changes} : player);
+
+    return {
+        dravocar: allPlayers.filter(player => player.isBetrayer === true),
+        kaotika: allPlayers.filter(player => player.isBetrayer === false)
+    }
 }
 
