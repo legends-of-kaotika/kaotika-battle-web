@@ -98,7 +98,7 @@ function App() {
     <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
 
       {/* Header Container */}
-      <HeaderContainer />
+      {startBattle && <HeaderContainer />}
       {/* Battle Container */}
       {startBattle && <BattleContainer />}
       {!startBattle && <WaitingBattle />}
