@@ -32,22 +32,17 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      // Spaces rule
-      "indent": ['error', 2],
-      // Not used vars rule
+      quotes: ["error", "single"],
+      semi: ["error", "always"],
+      indent: ['error', 2],
       "no-unused-vars": ["error", {
-        "vars": "all",
-        "args": "after-used",
-        "caughtErrors": "all",
-        "ignoreRestSiblings": false,
-        "reportUsedIgnorePattern": false
+        vars: "all",
+        args: "after-used",
+        caughtErrors: "all",
+        ignoreRestSiblings: false,
+        reportUsedIgnorePattern: false
       }],
-      // Functions rule
       "function-paren-newline": ["error", "never"],
-      "semi": ["error", "always"],
-      "react/jsx-first-prop-new-line": "always",
-      // Quotes rule
-      "quotes": ["error", "single"],
     },
   },
 )
