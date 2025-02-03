@@ -97,7 +97,7 @@ function App() {
       {finishTurn && <FinishTurn/>}
 
       {/* Footer Container */}
-      <Hud players={players} />
+      <Hud />
     </div>
 
 

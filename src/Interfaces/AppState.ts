@@ -1,8 +1,13 @@
 import { Socket } from "socket.io-client";
 import { Player } from "./Player";
 
+interface PlayersRole {
+    dravocar: Player[];
+    kaotika: Player[];
+}
+
 export interface AppState{
-    players : Player[];
+    players : PlayersRole;
     addPlayer: (player: Player) => void;
     socket: Socket;
     round: number;
