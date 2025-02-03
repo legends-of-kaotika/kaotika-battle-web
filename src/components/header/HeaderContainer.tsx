@@ -32,7 +32,7 @@ const HeaderContainer: React.FC = () => {
 
       {/* Left Player Attributes */}
       <LeftPlayerAttributes
-        player={attacker!}
+      player={attacker!}
       />
 
       {/* Round Container */}
