@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Socket } from 'socket.io-client';
 import { Player } from './Player';
 import { PlayersRole } from './PlayerRole';

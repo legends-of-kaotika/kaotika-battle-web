@@ -5,6 +5,7 @@ import potion_disabled from '/images/potion_disabled.png';
 
 
 interface Inventory {
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   antidote_potions: any[];
   healing_potions: any[];
   enhancer_potions: any[];
