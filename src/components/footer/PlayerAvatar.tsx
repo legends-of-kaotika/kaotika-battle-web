@@ -6,8 +6,8 @@ interface PlayerProps {
 }
 
 const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
-  
-  const getBorderStyle = (isBetrayer: boolean , maxHitpoints: number, hitpoints: number) => {
+
+  const getBorderStyle = (isBetrayer: boolean, maxHitpoints: number, hitpoints: number) => {
 
     const fixedDegreesStart = 0;
     const fixedDegreesEnd = 180;
@@ -21,11 +21,11 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
 
     const bottomColor = isBetrayer ? 'black' : 'orange';
     return {
-        
+
       background: `conic-gradient(
             from 90deg, /* Inicia el gradiente en 90 grados */
-             ${bottomColor} ${fixedDegreesStart}deg,
-             ${bottomColor}  ${fixedDegreesEnd}deg,
+            ${bottomColor} ${fixedDegreesStart}deg,
+            ${bottomColor}  ${fixedDegreesEnd}deg,
             red ${fixedDegreesEnd}deg ${fixedDegreesEnd + lifeDegrees}deg,
             gray ${fixedDegreesEnd + lifeDegrees}deg ${totalDegrees}deg
           )`,
@@ -36,7 +36,7 @@ const PlayerAvatar: React.FC<PlayerProps> = ({ player }) => {
     <div
       className="relative w-18 h-18 rounded-full flex items-center justify-center"
       style={{
-        background: getBorderStyle(player.isBetrayer,player.base_attributes.hit_points,player.attributes.hit_points).background,
+        background: getBorderStyle(player.isBetrayer, player.base_attributes.hit_points, player.attributes.hit_points).background,
         padding: '6px',
         borderRadius: '50%',
         transition: 'background 0.5s ease',

@@ -17,7 +17,7 @@ const PotionContainer: React.FC = ({ }) => {
     healing_potions: [],
     enhancer_potions: []
   };
-  
+
   const inventory: Inventory = attacker?.inventory || defaultInventory;
   const potionImages = getPotionImages(inventory);
 

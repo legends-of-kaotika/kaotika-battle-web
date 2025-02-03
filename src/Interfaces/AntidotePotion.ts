@@ -2,7 +2,7 @@ import { AntidoteModifier } from "./AntidoteModifier";
 import { Curse } from "./Curse";
 
 export interface AntidotePotion {
-	_id: string, 
+	_id: string,
 	name: string,
 	description: string,
 	image: string,
