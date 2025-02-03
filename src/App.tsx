@@ -15,7 +15,7 @@ import { PlayersRole } from './Interfaces/PlayerRole';
 function App() {
   const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [startBattle, setStartBattle] = useState<boolean>(false);
+  const [startBattle, setStartBattle] = useState<boolean>(true);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
 
   useEffect(() => {
@@ -103,7 +103,7 @@ function App() {
       {startBattle && <BattleContainer />}
       {!startBattle && <WaitingBattle />}
 
-      {finishTurn && <FinishTurn />}
+      {finishTurn && startBattle && <FinishTurn />}
 
       {/* Footer Container */}
       <Hud />
