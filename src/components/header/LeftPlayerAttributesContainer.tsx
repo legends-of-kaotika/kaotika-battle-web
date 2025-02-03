@@ -8,8 +8,8 @@ interface LeftPlayerAttributesInterface {
 }
 
 const LeftPlayerAttributes: React.FC<LeftPlayerAttributesInterface> = ({ player }) => {
-  const { attacker, setAttacker} = useStore();
-  
+  const { attacker, setAttacker } = useStore();
+
 
   useEffect(() => {
     setAttacker(attackerData);
@@ -25,9 +25,9 @@ const LeftPlayerAttributes: React.FC<LeftPlayerAttributesInterface> = ({ player 
 
       {/* Left Player Life Bar */}
 
-      { attacker !== null ? (
+      {attacker !== null ? (
         <LeftPlayerLifeBar maxHitpoints={attacker.base_attributes.hit_points} hitpoints={attacker.attributes.hit_points} />
-      ) : null }
+      ) : null}
       <div className="flex h-full w-[65%] mr-auto rounded-md items-start justify-center text-3xl z-20 pt-[1%]">
         {player.nickname}
       </div>

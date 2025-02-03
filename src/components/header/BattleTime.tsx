@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import useStore from "../../store/store";
 
 interface BattleTimeInterface {
@@ -6,7 +6,7 @@ interface BattleTimeInterface {
 }
 
 const BattleTime: React.FC<BattleTimeInterface> = ({ }) => {
-  const { timer, setTimer} = useStore();
+  const { timer, setTimer } = useStore();
 
   useEffect(() => {
     const timerInterval = setInterval(() => {
@@ -17,7 +17,7 @@ const BattleTime: React.FC<BattleTimeInterface> = ({ }) => {
   }, []);
 
   useEffect(() => {
-    if(timer <= 0){
+    if (timer <= 0) {
       setTimer(0);
     }
   }, [timer])

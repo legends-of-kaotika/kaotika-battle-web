@@ -8,7 +8,7 @@ import { EnhancerPotion } from '../../src/Interfaces/EnhancerPotion';
 type Potion = HealingPotion | AntidotePotion | EnhancerPotion;
 
 interface Inventory {
-  antidote_potions: AntidotePotion[];   
+  antidote_potions: AntidotePotion[];
   enhancer_potions: EnhancerPotion[];
   healing_potions: EnhancerPotion[];
 }

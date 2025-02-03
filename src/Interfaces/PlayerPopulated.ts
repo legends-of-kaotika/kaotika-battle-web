@@ -28,7 +28,7 @@ export interface PlayerPopulated {
   attributes: Modifier;
   classroom_id: string | null;
   isBetrayer: boolean;
-  equipment:{
+  equipment: {
     helmet: Helmet | null,
     weapon: Weapon,
     armor: Armor,

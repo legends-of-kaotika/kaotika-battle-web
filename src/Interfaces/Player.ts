@@ -17,7 +17,7 @@ export interface Player {
   profile: Profile | null;
   attributes: Modifier;
   base_attributes: Modifier;
-  equipment:{
+  equipment: {
     // weapon: Weapon,
     weapon: string,
     healing_potion: HealingPotion,

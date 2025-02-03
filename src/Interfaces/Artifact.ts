@@ -2,7 +2,7 @@ import { Modifier } from "./Modifier"
 
 export interface Artifact {
   _id: string,
-  name: string, 
+  name: string,
   description: string,
   type: string
   image: string,

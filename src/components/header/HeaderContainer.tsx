@@ -18,7 +18,7 @@ const HeaderContainer: React.FC = () => {
 
   return (
     <div className="relative flex flex-row w-full h-[25%] justify-between rounded-md pt-[0.9%]">
-      
+
       {/* Border Image */}
       <img src={borderImage}
         alt="Border Image"
@@ -27,7 +27,7 @@ const HeaderContainer: React.FC = () => {
 
       {/* Left Player Avatar */}
       <LeftPlayerAvatar
-      player={attacker!}
+        player={attacker!}
       />
 
       {/* Left Player Attributes */}
