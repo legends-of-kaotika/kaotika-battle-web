@@ -2,12 +2,15 @@ import { create } from "zustand";
 import { AppState } from "../Interfaces/AppState";
 import { io } from "socket.io-client";
 import { Player } from "../Interfaces/Player";
+import { PlayersRole } from "../Interfaces/PlayerRole";
 
 const SERVER_URL = 'https://kaotika-battle-server.onrender.com';
 
 const useStore = create<AppState>()((set) => ({
-  players: [],
-  addPlayer: (player: Player) => set((state) => ({ players: [...state.players, player] })),
+
+  players: { dravocar: [], kaotika: [] },
+  addKaotika: (kaotika: Player) => set((state) => ({ players: { ...state.players, kaotika: [...state.players.kaotika, kaotika] } })),
+  addDravocar: (dravocar: Player) => set((state) => ({ players: { ...state.players, dravocar: [...state.players.dravocar, dravocar] } })),
   socket: io(SERVER_URL),
   round: 1,
   addRound: (by: number) => set((state) => ({ round: state.round += by })),
@@ -25,9 +28,10 @@ const useStore = create<AppState>()((set) => ({
 
   setAttacker: (attacker: Player | null) => set(() => ({ attacker: attacker })),
   setDefender: (defender: Player | null) => set(() => ({ defender: defender })),
-  setPlayers: (players: Player[]) => set(() => ({ players: players })),
-  timer: 30,
-  setTimer: (timer: number) => set((state) => ({ timer: state.timer -= timer })),
+  setPlayers: (players: PlayersRole) => set(() => ({ players: players })),
+  timer: 0,
+  setTimer: (timer: number) => set(() => ({ timer: timer })),
+
 
 }));
 

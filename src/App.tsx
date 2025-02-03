@@ -10,12 +10,12 @@ import updatePlayerById from './helpers/updatePlayerById';
 import { Player } from './Interfaces/Player';
 import useStore from './store/store';
 import battleImage from '/images/battle_bg.webp';
+import { PlayersRole } from './Interfaces/PlayerRole';
 
 function App() {
-
-  const { players, addPlayer, socket, setPlayers, setDefender, timer, setAttacker } = useStore();
+  const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [startBattle, setStartBattle] = useState<boolean>(true);
+  const [startBattle, setStartBattle] = useState<boolean>(false);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
 
   useEffect(() => {
@@ -32,10 +32,15 @@ function App() {
 
     socket.on('web-sendUser', (data: Player) => {
       console.log('enter in web-sendUser ' + data);
-      addPlayer(data);
+      if(data.isBetrayer){
+        addDravocar(data);
+      }else{
+        addKaotika(data);
+      }    
     });
 
-    socket.on('connectedUsers', (data: Player[]) => {
+    socket.on('connectedUsers', (data : PlayersRole) => {
+
       setPlayers(data);
     });
 
@@ -51,9 +56,10 @@ function App() {
     });
 
     socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
-      console.log('updatea Player');
       console.log('daño: ' + totalDamage);
       setPlayers(updatePlayerById(players, id, attr));
+      socket.emit('web-turnEnd');
+      setFinishTurn(true);
     });
 
     socket.on('assign-turn', (data: Player) => {
@@ -69,7 +75,7 @@ function App() {
       socket.off('web-setSelectedPlayer');
       socket.off('updatePlayer');
     };
-  }, [addPlayer, players, setAttacker, setDefender, setPlayers, socket]);
+  }, [addDravocar, addKaotika, players, setAttacker, setDefender, setPlayers, socket]);
 
   useEffect(() => {
     console.log('Connected to socket server: ' + isConnected);
@@ -81,14 +87,12 @@ function App() {
 
   }, [players]);
 
-
-  const finishTurnHandler = () => {
-    socket.emit('turn_end');
-    setFinishTurn(true);
-  };
-  if (timer === 0) {
-    finishTurnHandler();
-  }
+  useEffect(() => {
+    if (timer === 0) {
+      socket.emit('web-turnEnd');
+      setFinishTurn(true);
+    };
+  }, [socket, timer]);
 
   return (
     <div
@@ -96,15 +100,15 @@ function App() {
       style={{ backgroundImage: `url(${battleImage})` }}>
 
       {/* Header Container */}
-      <HeaderContainer />
+      {startBattle && <HeaderContainer />}
       {/* Battle Container */}
       {startBattle && <BattleContainer />}
       {!startBattle && <WaitingBattle />}
 
-      {finishTurn && <FinishTurn />}
+      {finishTurn && startBattle && <FinishTurn />}
 
       {/* Footer Container */}
-      <Hud players={players} />
+      <Hud />
     </div>
 
 

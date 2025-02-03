@@ -7,14 +7,13 @@ import RightPlayerAttributes from './RightPlayerAttributes';
 import RightPlayerAvatar from './RightPlayerAvatar';
 import RoundContainer from './RoundContainer';
 import borderImage from '/images/header_border.png';
-import Battle from '../battle/Battle';
 
 const HeaderContainer: React.FC = () => {
   const { attacker, setAttacker, defender, setDefender } = useStore();
 
   useEffect(() => {
-    setAttacker(attackerData);
-    setDefender(defenderData);
+    setAttacker(attacker);
+    setDefender(defender);
   }, [setAttacker, setDefender]);
 
   return (
