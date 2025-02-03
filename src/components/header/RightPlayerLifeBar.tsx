@@ -15,14 +15,18 @@ const RightPlayerLifeBar: React.FC<RightPlayerLifeBarInterface> = ({ maxHitpoint
   useEffect(() => {
     setLife(hitpoints / maxHitpoints * 100);
     setMissingLife((maxHitpoints - hitpoints) / maxHitpoints * 100);
-  }, [hitpoints]);
+  }, [hitpoints, maxHitpoints]);
 
   return (
     <div className="flex inline-row h-[70%] w-full">
-      <div className={`bg-right bg-cover transition-all duration-1000 transition-slowest ease`} style={{ backgroundImage: `url(${missingRightLifeBar})`, width: `${missingLife}%` }} />
-      <div className={`bg-right bg-cover transition-all duration-1000 transition-slowest ease`} style={{ backgroundImage: `url(${rightLifeBar})`, width: `${life}%` }} />
+      <div
+        className={'bg-right bg-cover transition-all duration-1000 transition-slowest ease'}
+        style={{ backgroundImage: `url(${missingRightLifeBar})`, width: `${missingLife}%` }} />
+      <div
+        className={'bg-right bg-cover transition-all duration-1000 transition-slowest ease'}
+        style={{ backgroundImage: `url(${rightLifeBar})`, width: `${life}%` }} />
     </div>
-  )
-}
+  );
+};
 
 export default RightPlayerLifeBar;

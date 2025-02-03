@@ -8,9 +8,9 @@ import HeaderContainer from './components/header/HeaderContainer';
 import getPlayerById from './helpers/getPlayerById';
 import updatePlayerById from './helpers/updatePlayerById';
 import { Player } from './Interfaces/Player';
+import { PlayersRole } from './Interfaces/PlayerRole';
 import useStore from './store/store';
 import battleImage from '/images/battle_bg.webp';
-import { PlayersRole } from './Interfaces/PlayerRole';
 
 function App() {
   const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();

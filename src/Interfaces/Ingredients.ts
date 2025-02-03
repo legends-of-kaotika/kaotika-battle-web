@@ -8,7 +8,3 @@ export interface Ingredient {
   type: string;
   qty: number;
 }
-
-  
-
-

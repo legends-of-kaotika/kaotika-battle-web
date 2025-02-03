@@ -5,7 +5,6 @@ interface LeftPlayerAttributesInterface {
 }
 
 const LeftPlayerAvatar: React.FC<LeftPlayerAttributesInterface> = ({ player }) => {
-  // const { attacker } = useStore();
   return (
     <div className="flex flex-start h-[55%] w-[7%] ml-[4.5%] justify-center items-center">
 

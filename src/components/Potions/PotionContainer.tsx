@@ -1,7 +1,7 @@
 import React from 'react';
-import potion_disabled from '/images/potion_disabled.png';
-import useStore from '../../store/store';
 import getPotionImages from '../../helpers/getPotionsByattacker';
+import useStore from '../../store/store';
+import potion_disabled from '/images/potion_disabled.png';
 
 
 interface Inventory {
@@ -10,7 +10,7 @@ interface Inventory {
   enhancer_potions: any[];
 }
 
-const PotionContainer: React.FC = ({ }) => {
+const PotionContainer: React.FC = () => {
   const { attacker } = useStore();
   const defaultInventory = {
     antidote_potions: [],
@@ -26,9 +26,17 @@ const PotionContainer: React.FC = ({ }) => {
       <div className="flex flex-col h-auto w-1/12 justify-center items-center">
         <div className="flex flex-col">
           {[...Array(3)].map((_, index) => (
-            <div key={index} className="relative flex flex-col items-center">
-              <img className="w-28 h-28 mb-2" src={potion_disabled} draggable="false" />
-              {potionImages[index] && <img className="absolute w-16 h-16 top-5" src={potionImages[index]} draggable="false" />}
+            <div
+              key={index}
+              className="relative flex flex-col items-center">
+              <img
+                className="w-28 h-28 mb-2"
+                src={potion_disabled}
+                draggable="false" />
+              {potionImages[index] && <img
+                className="absolute w-16 h-16 top-5"
+                src={potionImages[index]}
+                draggable="false" />}
             </div>
           ))}
         </div>

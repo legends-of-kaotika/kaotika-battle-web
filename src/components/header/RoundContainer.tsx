@@ -1,11 +1,7 @@
-import BattleTime from "./BattleTime";
-import RoundCounter from "./RoundCounter";
+import BattleTime from './BattleTime';
+import RoundCounter from './RoundCounter';
 
-interface RoundContainerInterface {
-
-}
-
-const RoundContainer: React.FC<RoundContainerInterface> = ({ }) => {
+const RoundContainer: React.FC = () => {
 
   return (
     <div className="flex flex-col justify-items-start items-start h-full w-1/12 rounded-md z-20">

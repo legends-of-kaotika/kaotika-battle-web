@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { attackerData, defenderData } from '../../constants/playersData';
 import useStore from '../../store/store';
 import LeftPlayerAttributes from './LeftPlayerAttributes';
 import LeftPlayerAvatar from './LeftPlayerAvatar';
@@ -14,7 +13,7 @@ const HeaderContainer: React.FC = () => {
   useEffect(() => {
     setAttacker(attacker);
     setDefender(defender);
-  }, [setAttacker, setDefender]);
+  }, [attacker, defender, setAttacker, setDefender]);
 
   return (
     <div className="relative flex flex-row w-full h-[25%] justify-between rounded-md pt-[0.9%]">
