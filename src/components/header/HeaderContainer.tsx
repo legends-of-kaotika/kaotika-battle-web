@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useStore from '../../store/store';
 import LeftPlayerAttributes from './LeftPlayerAttributes';
 import LeftPlayerAvatar from './LeftPlayerAvatar';
@@ -8,13 +7,8 @@ import RoundContainer from './RoundContainer';
 import borderImage from '/images/header_border.png';
 
 const HeaderContainer: React.FC = () => {
-  const { attacker, setAttacker, defender, setDefender } = useStore();
-
-  useEffect(() => {
-    setAttacker(attacker);
-    setDefender(defender);
-  }, [attacker, defender, setAttacker, setDefender]);
-
+  const { attacker, defender } = useStore();
+  
   return (
     <div className="relative flex flex-row w-full h-[25%] justify-between rounded-md pt-[0.9%]">
 
