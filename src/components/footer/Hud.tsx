@@ -1,18 +1,10 @@
-import React, { useEffect } from 'react';
-import { Player } from '../../Interfaces/Player';
+import React from 'react';
 import useStore from '../../store/store';
 import PlayerAvatar from './PlayerAvatar';
 
 const Hud: React.FC = () => {
 
   const { players} = useStore();
-  const [dravocar, setDravocar] = React.useState<Player[]>([]);
-  const [kaotika, setKaotika] = React.useState<Player[]>([]);
-  
-  useEffect(() => {
-    setDravocar(players?.dravocar);
-    setKaotika(players?.kaotika);
-  }, [players]);
 
   return (
 
@@ -20,11 +12,11 @@ const Hud: React.FC = () => {
       {/*  HUD */}
       <div className="w-full max-h-[40%] fixed bottom-0 p-4 flex items-stretch justify-between ">
 
-        {/*  Loyal  */}
+        {/*  Kaotika  */}
         <div className="flex flex-col items-center justify-start w-[46%] border-r-2 border-white p-2">
           <h2 className="text-4xl mb-2">KAOTIKA</h2>
           <div className="flex flex-wrap justify-center h-full overflow-y-auto">
-            {kaotika.map((player, index) => (
+            {players?.kaotika.map((player, index) => (
               <div
                 key={index}
                 className="m-1">
@@ -41,11 +33,11 @@ const Hud: React.FC = () => {
 
         </div>
 
-        {/* Betrayers  */}
+        {/* Dravocar  */}
         <div className="flex flex-col items-center justify-start w-[46%] border-l-2 border-white p-2">
           <h2 className="text-4xl mb-2">DRAVOCAR</h2>
           <div className="flex flex-wrap justify-center h-full overflow-y-auto">
-            {dravocar.map((player, index) => (
+            {players?.dravocar.map((player, index) => (
               <div
                 key={index}
                 className="m-1">

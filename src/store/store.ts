@@ -1,6 +1,6 @@
-import { io } from 'socket.io-client';
 import { create } from 'zustand';
 import { AppState } from '../Interfaces/AppState';
+import { io } from 'socket.io-client';
 import { Player } from '../Interfaces/Player';
 import { PlayersRole } from '../Interfaces/PlayerRole';
 
@@ -31,6 +31,8 @@ const useStore = create<AppState>()((set) => ({
   setPlayers: (players: PlayersRole) => set(() => ({ players: players })),
   timer: 0,
   setTimer: (timer: number) => set(() => ({ timer: timer })),
+
+
 }));
 
 export default useStore;
