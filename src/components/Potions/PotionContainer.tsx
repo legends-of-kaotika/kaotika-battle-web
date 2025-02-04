@@ -2,14 +2,7 @@ import React from 'react';
 import getPotionImages from '../../helpers/getPotionsByattacker';
 import useStore from '../../store/store';
 import potion_disabled from '/images/potion_disabled.png';
-
-
-interface Inventory {
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  antidote_potions: any[];
-  healing_potions: any[];
-  enhancer_potions: any[];
-}
+import { Inventory } from '../../Interfaces/Inventory';
 
 const PotionContainer: React.FC = () => {
   const { attacker } = useStore();
