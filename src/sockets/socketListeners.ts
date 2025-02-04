@@ -4,6 +4,7 @@ import { PlayersRole } from '../Interfaces/PlayerRole';
 import getPlayerById from '../helpers/getPlayerById';
 import updatePlayerById from '../helpers/updatePlayerById';
 import useStore from '../store/store';
+import { deletePlayerById } from '../helpers/utils';
 
 export const useSocketListeners = () => {
   const { players, socket, setPlayers, setDefender, timer, setAttacker, addDravocar, addKaotika } = useStore();
@@ -70,6 +71,11 @@ export const useSocketListeners = () => {
       setFinishTurn(false);
     }
 
+    function deletePlayer(id: string) : void{
+      console.log('remove player');
+      setPlayers(deletePlayerById(players, id));
+    }
+
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
     socket.on('web-sendUser', webSendUser);
@@ -78,6 +84,7 @@ export const useSocketListeners = () => {
     socket.on('web-setSelectedPlayer', webSelectedPlayer);
     socket.on('updatePlayer', updatePlayer);
     socket.on('assign-turn', assignTurn);
+    socket.on('removePlayer', deletePlayer);
 
     return () => {
       socket.off('connect', onConnect);
@@ -88,6 +95,7 @@ export const useSocketListeners = () => {
       socket.off('web-setSelectedPlayer');
       socket.off('updatePlayer');
       socket.off('assign-turn');
+      socket.off('removePlayer');
     };
   }, [players]);
 
