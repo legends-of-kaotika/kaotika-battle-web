@@ -4,7 +4,7 @@ import { AppState } from '../Interfaces/AppState';
 import { Player } from '../Interfaces/Player';
 import { PlayersRole } from '../Interfaces/PlayerRole';
 
-const SERVER_URL = 'https://kaotika-battle-server.onrender.com';
+const SERVER_URL = 'https://kaotika-battle-server-yqen.onrender.com';
 
 const useStore = create<AppState>()((set) => ({
 

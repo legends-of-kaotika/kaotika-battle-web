@@ -1,6 +1,7 @@
 import { AntidotePotion } from './AntidotePotion';
 import { EnhancerPotion } from './EnhancerPotion';
 import { HealingPotion } from './HealingPotion';
+import { Inventory } from './Inventory';
 import { Modifier } from './Modifier';
 import { Profile } from './Profile';
 import { Status } from './Status';
@@ -24,11 +25,7 @@ export interface Player {
     antidote_potion: AntidotePotion,
     enhancer_potion: EnhancerPotion,
   },
-  inventory: {
-    healing_potions: HealingPotion[],
-    antidote_potions: AntidotePotion[],
-    enhancer_potions: EnhancerPotion[],
-  },
+  inventory: Inventory,
   status: Status,
   role: string,
   isBetrayer: boolean,
