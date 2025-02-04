@@ -62,8 +62,8 @@ function App() {
       setFinishTurn(true);
     });
 
-    socket.on('assign-turn', (data: Player) => {
-      setAttacker(data);
+    socket.on('assign-turn', (id: string) => {
+      setAttacker(getPlayerById(players, id)!);
     });
 
     return () => {

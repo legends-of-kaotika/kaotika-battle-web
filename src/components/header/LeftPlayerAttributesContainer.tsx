@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import { attackerData } from '../../constants/playersData';
 import { Player } from '../../Interfaces/Player';
 import useStore from '../../store/store';
 import LeftPlayerLifeBar from './LeftPlayerLifeBar';
@@ -9,23 +7,12 @@ interface LeftPlayerAttributesInterface {
 }
 
 const LeftPlayerAttributes: React.FC<LeftPlayerAttributesInterface> = ({ player }) => {
-  const { attacker, setAttacker } = useStore();
-
-
-  useEffect(() => {
-    setAttacker(attackerData);
-  }, [setAttacker]);
-
-  useEffect(() => {
-    console.log('ATTACKER');
-    console.log(attacker);
-  }, [attacker]);
+  const { attacker } = useStore();
 
   return (
     <div className="flex flex-col justify-items-start items-start h-[60%] w-[27%] ml-[2.6%] mt-[2%] pr-[0.1%] pl-[0.4%]">
 
       {/* Left Player Life Bar */}
-
       {attacker !== null ? (
         <LeftPlayerLifeBar
           maxHitpoints={attacker.base_attributes.hit_points}
