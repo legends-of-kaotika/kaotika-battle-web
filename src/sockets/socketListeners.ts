@@ -5,9 +5,10 @@ import updatePlayerById from '../helpers/updatePlayerById';
 import useStore from '../store/store';
 import { connectedUsersHandler } from './connectedUsersHandler';
 import { webSendUserHandler } from './webSendUserHandler';
+import { webSelectedPlayerHandler } from './webSelectedPlayer';
 
 export const useSocketListeners = () => {
-  const { players, socket, setPlayers, setDefender, timer, setAttacker } = useStore();
+  const { players, socket, setPlayers, timer, setAttacker } = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(false);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
@@ -28,6 +29,9 @@ export const useSocketListeners = () => {
 
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
+    socket.on('gameStart', () => {
+      setStartBattle(true);
+    });
 
     //Add kaotika and dravocar
     webSendUserHandler();
@@ -35,13 +39,8 @@ export const useSocketListeners = () => {
     //Connected users handler
     connectedUsersHandler();
 
-    socket.on('gameStart', () => {
-      setStartBattle(true);
-    });
-
-    socket.on('web-setSelectedPlayer', (id: string) => {
-      setDefender(getPlayerById(players, id)!);
-    });
+    //Web selected player handler
+    webSelectedPlayerHandler();
 
     socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
       console.log('daño: ' + totalDamage);

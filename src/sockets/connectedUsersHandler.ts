@@ -6,8 +6,7 @@ const { setPlayers, socket } = useStore();
 
 export const connectedUsersHandler = () => {
   socket.on('connectedUsers', (data : PlayersRole) => {
-    console.log(1);
-
+    console.log(data);
     setPlayers(data);
   });
 };
