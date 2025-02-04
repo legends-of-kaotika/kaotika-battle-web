@@ -17,6 +17,17 @@ export const useSocketListeners = () => {
   }, []);
 
   useEffect(() => {
+    console.log('Connected to socket server: ' + isConnected);
+  }, [isConnected]);
+
+  useEffect(() => {
+    if (timer === 0) {
+      socket.emit('web-turnEnd');
+      setFinishTurn(true);
+    };
+  }, [socket, timer]);
+
+  useEffect(() => {
     function onConnect() {
       setIsConnected(true);
     }
@@ -25,42 +36,46 @@ export const useSocketListeners = () => {
       setIsConnected(false);
     }
 
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-
-    socket.on('web-sendUser', (data: Player) => {
-      console.log('enter in web-sendUser ' + data);
+    function webSendUser(data: Player){
       if (data.isBetrayer) {
         addDravocar(data);
       } else {
         addKaotika(data);
       }
-    });
+    }
 
-    socket.on('connectedUsers', (data : PlayersRole) => {
-      console.log(1);
-
+    function connectedUsers(data: PlayersRole) {
       setPlayers(data);
-    });
-    socket.on('gameStart', () => {
+    }
+
+    function gameStart(){
       setStartBattle(true);
-    });
+    }
 
-    socket.on('web-setSelectedPlayer', (id: string) => {
+    function webSelectedPlayer(id: string) {
       setDefender(getPlayerById(players, id)!);
-    });
+    }
 
-    socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
+    function updatePlayer(id: string, attr: Partial<Player>, totalDamage: number) {
       console.log('daño: ' + totalDamage);
       setPlayers(updatePlayerById(players, id, attr));
       socket.emit('web-turnEnd');
       setFinishTurn(true);
-    });
+    }
 
-    socket.on('assign-turn', (id: string) => {
+    function assignTurn(id: string) {
       setAttacker(getPlayerById(players, id)!);
       setFinishTurn(false);
-    });
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('disconnect', onDisconnect);
+    socket.on('web-sendUser', webSendUser);
+    socket.on('connectedUsers', connectedUsers);
+    socket.on('gameStart', gameStart);
+    socket.on('web-setSelectedPlayer', webSelectedPlayer);
+    socket.on('updatePlayer', updatePlayer);
+    socket.on('assign-turn', assignTurn);
 
     return () => {
       socket.off('connect', onConnect);
@@ -72,17 +87,6 @@ export const useSocketListeners = () => {
       socket.off('updatePlayer');
     };
   }, []);
-
-  useEffect(() => {
-    console.log('Connected to socket server: ' + isConnected);
-  }, [isConnected]);
-
-  useEffect(() => {
-    if (timer === 0) {
-      socket.emit('web-turnEnd');
-      setFinishTurn(true);
-    };
-  }, [socket, timer]);
 
   return { startBattle, finishTurn };
 };
