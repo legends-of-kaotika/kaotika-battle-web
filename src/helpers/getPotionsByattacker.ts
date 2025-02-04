@@ -4,14 +4,9 @@ import { HealingPotion } from '../../src/Interfaces/HealingPotion';
 import antidote from '/images/antidote_1.png';
 import enhancer from '/images/enhancer_2.png';
 import healing from '/images/healing_3.png';
+import { Inventory } from '../Interfaces/Inventory';
 
 type Potion = HealingPotion | AntidotePotion | EnhancerPotion;
-
-interface Inventory {
-  antidote_potions: AntidotePotion[];
-  enhancer_potions: EnhancerPotion[];
-  healing_potions: EnhancerPotion[];
-}
 
 function getPotionImages(inventory: Inventory): string[] {
   const potionImages: string[] = [];
