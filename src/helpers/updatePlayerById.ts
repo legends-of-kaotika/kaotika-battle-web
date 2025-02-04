@@ -3,7 +3,7 @@ import { PlayersRole } from '../Interfaces/PlayerRole';
 
 export default function updatePlayerById(players: PlayersRole, id: string, changes: Partial<Player>) : PlayersRole{
 
-  console.log('players ' + players);
+  console.log(`update player by id ${id}`);
   const allPlayers = [...players.dravocar, ...players.kaotika].map(player => player._id === id ? {...player, ...changes} : player);
 
   return {

@@ -72,7 +72,7 @@ export const useSocketListeners = () => {
     }
 
     function deletePlayer(id: string) : void{
-      console.log('remove player');
+      console.log('remove player with the id ' + id);
       setPlayers(deletePlayerById(players, id));
     }
 
