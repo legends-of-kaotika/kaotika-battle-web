@@ -19,6 +19,11 @@ function App() {
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
 
   useEffect(() => {
+    socket.emit('web-sendSocketId');
+    socket.emit('web-sendUsers');
+  }, []);
+
+  useEffect(() => {
     function onConnect() {
       setIsConnected(true);
     }
@@ -40,6 +45,7 @@ function App() {
     });
 
     socket.on('connectedUsers', (data : PlayersRole) => {
+      console.log(1);
 
       setPlayers(data);
     });
@@ -47,9 +53,6 @@ function App() {
     socket.on('gameStart', () => {
       setStartBattle(true);
     });
-
-    socket.emit('web-sendSocketId');
-    socket.emit('web-sendUsers');
 
     socket.on('web-setSelectedPlayer', (id: string) => {
       setDefender(getPlayerById(players, id)!);
@@ -75,17 +78,11 @@ function App() {
       socket.off('web-setSelectedPlayer');
       socket.off('updatePlayer');
     };
-  }, [addDravocar, addKaotika, players, setAttacker, setDefender, setPlayers, socket]);
+  }, []);
 
   useEffect(() => {
     console.log('Connected to socket server: ' + isConnected);
   }, [isConnected]);
-
-  useEffect(() => {
-    console.log('PLAYERS: ');
-    console.log(players);
-
-  }, [players]);
 
   useEffect(() => {
     if (timer === 0) {
