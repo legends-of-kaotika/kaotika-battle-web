@@ -1,5 +1,6 @@
 import { Player } from '../../Interfaces/Player';
 import defaultAvatar from '/images/default_avatar.png';
+
 interface LeftPlayerAttributesInterface {
   player: Player,
 }
