@@ -37,6 +37,7 @@ export const useSocketListeners = () => {
     }
 
     function webSendUser(data: Player){
+      console.log('enter in send user' + data);
       if (data.isBetrayer) {
         addDravocar(data);
       } else {
@@ -45,7 +46,8 @@ export const useSocketListeners = () => {
     }
 
     function connectedUsers(data: PlayersRole) {
-      setPlayers(data);
+      console.log('conected users ' + data);
+      setPlayers(data); 
     }
 
     function gameStart(){
@@ -85,8 +87,9 @@ export const useSocketListeners = () => {
       socket.off('gameStart');
       socket.off('web-setSelectedPlayer');
       socket.off('updatePlayer');
+      socket.off('assign-turn');
     };
-  }, []);
+  }, [players]);
 
   return { startBattle, finishTurn };
 };
