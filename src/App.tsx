@@ -11,6 +11,7 @@ import { Player } from './Interfaces/Player';
 import { PlayersRole } from './Interfaces/PlayerRole';
 import useStore from './store/store';
 import battleImage from '/images/battle_bg.webp';
+import { deletePlayerById } from './helpers/utils';
 
 function App() {
   const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
@@ -45,16 +46,18 @@ function App() {
     });
 
     socket.on('connectedUsers', (data : PlayersRole) => {
-      console.log(1);
+      console.log('connected users ' + data);
 
       setPlayers(data);
     });
 
     socket.on('gameStart', () => {
+      console.log('gameStart');
       setStartBattle(true);
     });
 
     socket.on('web-setSelectedPlayer', (id: string) => {
+      console.log(`Selecting player defender with the id ${id}`);
       setDefender(getPlayerById(players, id)!);
     });
 
@@ -70,6 +73,10 @@ function App() {
       setFinishTurn(false);
     });
 
+    socket.on('removePlayer', (id : string) => {
+      setPlayers(deletePlayerById(players, id));
+    });
+
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
@@ -78,6 +85,7 @@ function App() {
       socket.off('gameStart');
       socket.off('web-setSelectedPlayer');
       socket.off('updatePlayer');
+      socket.off('removePlayer');
     };
   }, []);
 
@@ -91,6 +99,10 @@ function App() {
       setFinishTurn(true);
     };
   }, [socket, timer]);
+
+  useEffect(() => {
+    console.log(players);
+  }, [players]);
 
   return (
     <div
