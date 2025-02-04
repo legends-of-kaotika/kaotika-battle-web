@@ -6,7 +6,6 @@ import Hud from './components/footer/Hud';
 import HeaderContainer from './components/header/HeaderContainer';
 import { useSocketListeners } from './sockets/socketListeners';
 import battleImage from '/images/battle_bg.webp';
-import { deletePlayerById } from './helpers/utils';
 
 function App() {
   const { startBattle, finishTurn } = useSocketListeners();
