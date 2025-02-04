@@ -21,12 +21,12 @@ const HeaderContainer: React.FC = () => {
 
       {/* Left Player Avatar */}
       <LeftPlayerAvatar
-        player={attacker!}
+        player={attacker?.isBetrayer ? defender! : attacker!}
       />
 
       {/* Left Player Attributes */}
       <LeftPlayerAttributes
-        player={attacker!}
+        player={attacker?.isBetrayer ? defender! : attacker!}
       />
 
       {/* Round Container */}
@@ -34,12 +34,12 @@ const HeaderContainer: React.FC = () => {
 
       {/* Right Player Attributes */}
       <RightPlayerAttributes
-        player={defender!}
+        player={attacker?.isBetrayer ? attacker! : defender!}
       />
 
       {/* Right Player Avatar */}
       <RightPlayerAvatar
-        player={defender!}
+        player={attacker?.isBetrayer ? attacker! : defender!}
       />
 
     </div>
