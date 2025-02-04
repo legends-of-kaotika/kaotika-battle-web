@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Player } from '../Interfaces/Player';
+import { PlayersRole } from '../Interfaces/PlayerRole';
 import getPlayerById from '../helpers/getPlayerById';
 import updatePlayerById from '../helpers/updatePlayerById';
 import useStore from '../store/store';
-import { connectedUsersHandler } from './connectedUsersHandler';
-import { webSendUserHandler } from './webSendUserHandler';
-import { webSelectedPlayerHandler } from './webSelectedPlayer';
 
 export const useSocketListeners = () => {
-  const { players, socket, setPlayers, timer, setAttacker } = useStore();
+  const { players, socket, setPlayers, setDefender, timer, setAttacker, addDravocar, addKaotika } = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(false);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
@@ -29,18 +27,28 @@ export const useSocketListeners = () => {
 
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
+
+    socket.on('web-sendUser', (data: Player) => {
+      console.log('enter in web-sendUser ' + data);
+      if (data.isBetrayer) {
+        addDravocar(data);
+      } else {
+        addKaotika(data);
+      }
+    });
+
+    socket.on('connectedUsers', (data : PlayersRole) => {
+      console.log(1);
+
+      setPlayers(data);
+    });
     socket.on('gameStart', () => {
       setStartBattle(true);
     });
 
-    //Add kaotika and dravocar
-    webSendUserHandler();
-
-    //Connected users handler
-    connectedUsersHandler();
-
-    //Web selected player handler
-    webSelectedPlayerHandler();
+    socket.on('web-setSelectedPlayer', (id: string) => {
+      setDefender(getPlayerById(players, id)!);
+    });
 
     socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
       console.log('daño: ' + totalDamage);
