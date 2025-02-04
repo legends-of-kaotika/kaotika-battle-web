@@ -3,8 +3,8 @@ import { Player } from '../Interfaces/Player';
 import { PlayersRole } from '../Interfaces/PlayerRole';
 import getPlayerById from '../helpers/getPlayerById';
 import updatePlayerById from '../helpers/updatePlayerById';
-import useStore from '../store/store';
 import { deletePlayerById } from '../helpers/utils';
+import useStore from '../store/store';
 
 export const useSocketListeners = () => {
   const { players, socket, setPlayers, setDefender, timer, setAttacker, addDravocar, addKaotika } = useStore();
@@ -52,10 +52,15 @@ export const useSocketListeners = () => {
     }
 
     function gameStart(){
+      console.log('enter in socket gameStart');
+
       setStartBattle(true);
     }
 
     function webSelectedPlayer(id: string) {
+      console.log('enter in selected player');
+
+
       setDefender(getPlayerById(players, id)!);
     }
 
@@ -67,6 +72,8 @@ export const useSocketListeners = () => {
     }
 
     function assignTurn(id: string) {
+      console.log('enter in assign turn socket');
+
       setAttacker(getPlayerById(players, id)!);
       setFinishTurn(false);
     }
@@ -86,6 +93,8 @@ export const useSocketListeners = () => {
     socket.on('assign-turn', assignTurn);
     socket.on('removePlayer', deletePlayer);
 
+    console.log(players);
+
     return () => {
       socket.off('connect', onConnect);
       socket.off('disconnect', onDisconnect);
@@ -96,6 +105,7 @@ export const useSocketListeners = () => {
       socket.off('updatePlayer');
       socket.off('assign-turn');
       socket.off('removePlayer');
+      
     };
   }, [players]);
 
