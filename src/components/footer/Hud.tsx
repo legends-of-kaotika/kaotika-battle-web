@@ -3,7 +3,7 @@ import useStore from '../../store/store';
 import PlayerAvatar from './PlayerAvatar';
 
 const Hud: React.FC = () => {
-  
+
   const { players} = useStore();
 
   return (
@@ -12,7 +12,7 @@ const Hud: React.FC = () => {
       {/*  HUD */}
       <div className="w-full max-h-[40%] fixed bottom-0 p-4 flex items-stretch justify-between ">
 
-        {/*  Loyal  */}
+        {/*  Kaotika  */}
         <div className="flex flex-col items-center justify-start w-[46%] border-r-2 border-white p-2">
           <h2 className="text-4xl mb-2">KAOTIKA</h2>
           <div className="flex flex-wrap justify-center h-full overflow-y-auto">
@@ -33,7 +33,7 @@ const Hud: React.FC = () => {
 
         </div>
 
-        {/* Betrayers  */}
+        {/* Dravocar  */}
         <div className="flex flex-col items-center justify-start w-[46%] border-l-2 border-white p-2">
           <h2 className="text-4xl mb-2">DRAVOCAR</h2>
           <div className="flex flex-wrap justify-center h-full overflow-y-auto">
