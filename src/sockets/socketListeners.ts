@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Player } from '../Interfaces/Player';
-import { PlayersRole } from '../Interfaces/PlayerRole';
 import getPlayerById from '../helpers/getPlayerById';
 import updatePlayerById from '../helpers/updatePlayerById';
 import useStore from '../store/store';
+import { connectedUsersHandler } from './connectedUsersHandler';
 import { webSendUserHandler } from './webSendUserHandler';
 
 export const useSocketListeners = () => {
@@ -32,11 +32,9 @@ export const useSocketListeners = () => {
     //Add kaotika and dravocar
     webSendUserHandler();
 
-    socket.on('connectedUsers', (data : PlayersRole) => {
-      console.log(1);
+    //Connected users handler
+    connectedUsersHandler();
 
-      setPlayers(data);
-    });
     socket.on('gameStart', () => {
       setStartBattle(true);
     });
