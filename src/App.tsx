@@ -1,16 +1,16 @@
-import './App.css';
-import HeaderContainer from './components/header/HeaderContainer';
-import BattleContainer from './components/battle/BattleContainer';
 import { useEffect, useState } from 'react';
-import battleImage from '/images/battle_bg.webp';
-import Hud from './components/footer/Hud';
-import { Player } from './Interfaces/Player';
-import useStore from './store/store';
+import './App.css';
+import BattleContainer from './components/battle/BattleContainer';
+import FinishTurn from './components/battle/finishTurn';
 import WaitingBattle from './components/battle/WaitingBattle';
+import Hud from './components/footer/Hud';
+import HeaderContainer from './components/header/HeaderContainer';
 import getPlayerById from './helpers/getPlayerById';
 import updatePlayerById from './helpers/updatePlayerById';
-import FinishTurn from './components/battle/finishTurn';
+import { Player } from './Interfaces/Player';
 import { PlayersRole } from './Interfaces/PlayerRole';
+import useStore from './store/store';
+import battleImage from '/images/battle_bg.webp';
 
 function App() {
   const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
@@ -31,7 +31,7 @@ function App() {
     socket.on('disconnect', onDisconnect);
 
     socket.on('web-sendUser', (data: Player) => {
-      console.log("enter in web-sendUser " + data);
+      console.log('enter in web-sendUser ' + data);
       if(data.isBetrayer){
         addDravocar(data);
       }else{
@@ -56,7 +56,7 @@ function App() {
     });
 
     socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
-      console.log("daño: " + totalDamage)
+      console.log('daño: ' + totalDamage);
       setPlayers(updatePlayerById(players, id, attr));
       socket.emit('web-turnEnd');
       setFinishTurn(true);
@@ -74,15 +74,15 @@ function App() {
       socket.off('gameStart');
       socket.off('web-setSelectedPlayer');
       socket.off('updatePlayer');
-    }
-  }, []);
+    };
+  }, [addDravocar, addKaotika, players, setAttacker, setDefender, setPlayers, socket]);
 
   useEffect(() => {
     console.log('Connected to socket server: ' + isConnected);
-  }, [isConnected])
+  }, [isConnected]);
 
   useEffect(() => {
-    console.log("PLAYERS: ");
+    console.log('PLAYERS: ');
     console.log(players);
 
   }, [players]);
@@ -91,11 +91,13 @@ function App() {
     if (timer === 0) {
       socket.emit('web-turnEnd');
       setFinishTurn(true);
-    }
-  }, [timer]);
+    };
+  }, [socket, timer]);
 
   return (
-    <div className='w-screen h-screen bg-center bg-cover' style={{ backgroundImage: `url(${battleImage})` }}>
+    <div
+      className='w-screen h-screen bg-center bg-cover'
+      style={{ backgroundImage: `url(${battleImage})` }}>
 
       {/* Header Container */}
       {startBattle && <HeaderContainer />}
@@ -110,7 +112,7 @@ function App() {
     </div>
 
 
-  )
+  );
 }
 
-export default App
+export default App;

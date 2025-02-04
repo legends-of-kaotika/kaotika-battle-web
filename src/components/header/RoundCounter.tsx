@@ -1,10 +1,6 @@
-import useStore from "../../store/store";
+import useStore from '../../store/store';
 
-interface RoundCounterInterface {
-
-}
-
-const RoundCounter: React.FC<RoundCounterInterface> = ({ }) => {
+const RoundCounter: React.FC = () => {
   const { round } = useStore();
 
   return (

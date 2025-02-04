@@ -1,9 +1,9 @@
-import { AntidotePotion } from "./AntidotePotion";
-import { HealingPotion } from "./HealingPotion";
-import { EnhancerPotion } from "./EnhancerPotion";
-import { Profile } from "./Profile";
-import { Modifier } from "./Modifier";
-import { Status } from "./Status";
+import { AntidotePotion } from './AntidotePotion';
+import { EnhancerPotion } from './EnhancerPotion';
+import { HealingPotion } from './HealingPotion';
+import { Modifier } from './Modifier';
+import { Profile } from './Profile';
+import { Status } from './Status';
 // import { Weapon } from "./Weapon";
 
 export interface Player {
@@ -13,7 +13,7 @@ export interface Player {
   avatar: string;
   email: string;
   level: number;
-  socketId: String;
+  socketId: string;
   profile: Profile | null;
   attributes: Modifier;
   base_attributes: Modifier;

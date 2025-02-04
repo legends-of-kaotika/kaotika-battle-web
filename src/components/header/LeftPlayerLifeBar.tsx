@@ -15,14 +15,18 @@ const LeftPlayerLifeBar: React.FC<LeftPlayerLifeBarInterface> = ({ maxHitpoints,
   useEffect(() => {
     setLife(hitpoints / maxHitpoints * 100);
     setMissingLife((maxHitpoints - hitpoints) / maxHitpoints * 100);
-  }, [hitpoints]);
+  }, [hitpoints, maxHitpoints]);
 
   return (
     <div className="flex inline-row h-[70%] w-full">
-      <div className={`bg-left bg-cover transition-all duration-1000 transition-slowest ease`} style={{ backgroundImage: `url(${leftLifeBar})`, width: `${life}%` }} />
-      <div className={`bg-left bg-cover transition-all duration-1000 transition-slowest ease`} style={{ backgroundImage: `url(${missingLeftLifeBar})`, width: `${missingLife}%` }} />
+      <div
+        className={'bg-left bg-cover transition-all duration-1000 transition-slowest ease'}
+        style={{ backgroundImage: `url(${leftLifeBar})`, width: `${life}%` }} />
+      <div
+        className={'bg-left bg-cover transition-all duration-1000 transition-slowest ease'}
+        style={{ backgroundImage: `url(${missingLeftLifeBar})`, width: `${missingLife}%` }} />
     </div>
-  )
+  );
 };
 
 export default LeftPlayerLifeBar;

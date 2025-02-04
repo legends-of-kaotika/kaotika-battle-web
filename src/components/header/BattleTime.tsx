@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import useStore from "../../store/store";
+import { useEffect } from 'react';
+import useStore from '../../store/store';
 
 const BattleTime = () => {
   const { timer, setTimer, socket } = useStore();
@@ -12,7 +12,7 @@ const BattleTime = () => {
 
     return () => {
       socket.off('send-timer');
-    }
+    };
   }, [socket, setTimer]);
 
   return (

@@ -1,5 +1,5 @@
-import PotionContainer from "../Potions/PotionContainer";
-import Battle from "./Battle";
+import PotionContainer from '../Potions/PotionContainer';
+import Battle from './Battle';
 
 const BattleContainer: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ const BattleContainer: React.FC = () => {
       <PotionContainer></PotionContainer>
       <Battle />
     </div>
-  )
-}
+  );
+};
 
 export default BattleContainer;

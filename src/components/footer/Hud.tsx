@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import PlayerAvatar from './PlayerAvatar';
-import { Player} from '../../Interfaces/Player';
+import { Player } from '../../Interfaces/Player';
 import useStore from '../../store/store';
+import PlayerAvatar from './PlayerAvatar';
 
-
-
-const Hud: React.FC = ({}) => {
+const Hud: React.FC = () => {
 
   const { players} = useStore();
   const [dravocar, setDravocar] = React.useState<Player[]>([]);
@@ -27,7 +25,9 @@ const Hud: React.FC = ({}) => {
           <h2 className="text-4xl mb-2">KAOTIKA</h2>
           <div className="flex flex-wrap justify-center h-full overflow-y-auto">
             {kaotika.map((player, index) => (
-              <div key={index} className="m-1">
+              <div
+                key={index}
+                className="m-1">
                 <PlayerAvatar player={player} />
               </div>
             ))}
@@ -46,7 +46,9 @@ const Hud: React.FC = ({}) => {
           <h2 className="text-4xl mb-2">DRAVOCAR</h2>
           <div className="flex flex-wrap justify-center h-full overflow-y-auto">
             {dravocar.map((player, index) => (
-              <div key={index} className="m-1">
+              <div
+                key={index}
+                className="m-1">
                 <PlayerAvatar player={player} />
               </div>
             ))}
