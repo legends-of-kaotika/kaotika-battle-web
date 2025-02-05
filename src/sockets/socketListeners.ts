@@ -85,6 +85,11 @@ export const useSocketListeners = () => {
       setPlayers(deletePlayerById(players, id));
     }
 
+    function playerDisconnected(nickName: string) {
+      console.log('DISCONNECTED PLAYER');
+      console.log(nickName);
+    }
+
     socket.on(socketName.CONNECT, onConnect);
     socket.on(socketName.DISCONNECT, onDisconnect);
     socket.on(socketName.WEBSENDUSER, webSendUser);
@@ -94,6 +99,7 @@ export const useSocketListeners = () => {
     socket.on(socketName.UPDATEPLAYER, updatePlayer);
     socket.on(socketName.ASSIGNTURN, assignTurn);
     socket.on(socketName.REMOVEPLAYER, removePlayer);
+    socket.on(socketName.PLAYERDISCONNECTED, playerDisconnected);
 
     console.log('PLAYERS');
     console.log(players);
