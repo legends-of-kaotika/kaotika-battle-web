@@ -10,7 +10,7 @@ import { socketName } from './socketConstants';
 export const useSocketListeners = () => {
   const { players, socket, setPlayers, setDefender, timer, setAttacker, addDravocar, addKaotika, attacker } = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [startBattle, setStartBattle] = useState<boolean>(true);
+  const [startBattle, setStartBattle] = useState<boolean>(false);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
 
   useEffect(() => {

@@ -12,7 +12,7 @@ import battleImage from '/images/battle_bg.webp';
 function App() {
   const { startBattle, finishTurn } = useSocketListeners();
   const [initScreen] = useState(true);
-  const [animationFinished, setAnimationFinished] = useState(true);
+  const [animationFinished, setAnimationFinished] = useState(false);
 
   return (
     <>
