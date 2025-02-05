@@ -5,9 +5,10 @@ import getPlayerById from '../helpers/getPlayerById';
 import updatePlayerById from '../helpers/updatePlayerById';
 import { deletePlayerById } from '../helpers/utils';
 import useStore from '../store/store';
+import { socketName } from './socketConstants';
 
 export const useSocketListeners = () => {
-  const { players, socket, setPlayers, setDefender, timer, setAttacker, addDravocar, addKaotika } = useStore();
+  const { players, socket, setPlayers, setDefender, timer, setAttacker, addDravocar, addKaotika, attacker } = useStore();
   const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
   const [startBattle, setStartBattle] = useState<boolean>(false);
   const [finishTurn, setFinishTurn] = useState<boolean>(false);
@@ -23,6 +24,7 @@ export const useSocketListeners = () => {
 
   useEffect(() => {
     if (timer === 0) {
+      console.log('SEND TURN END SOCKET');
       socket.emit('web-turnEnd');
       setFinishTurn(true);
     };
@@ -72,9 +74,12 @@ export const useSocketListeners = () => {
     }
 
     function assignTurn(id: string) {
-      console.log('enter in assign turn socket');
+      console.log('assign turn to next person');
 
       setAttacker(getPlayerById(players, id)!);
+      console.log('ATTACKER');
+      console.log(attacker?.name);
+      
       setFinishTurn(false);
     }
 
@@ -96,8 +101,8 @@ export const useSocketListeners = () => {
     console.log(players);
 
     return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
+      socket.off(socketName.CONNECT, onConnect);
+      socket.off(socketName.DISCONNECT, onDisconnect);
       socket.off('connectedUsers');
       socket.off('web-sendUser');
       socket.off('gameStart');
