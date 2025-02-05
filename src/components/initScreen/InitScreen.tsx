@@ -1,6 +1,21 @@
+import { useEffect } from 'react';
 import KaotikaLegendsLogo from './KaotikaLengedsLogo';
 
-const InitScreen: React.FC = () => {
+interface InitScreenInterface {
+  // eslint-disable-next-line no-unused-vars
+  setAnimationFinished: (value: boolean) => void;
+}
+
+const InitScreen: React.FC<InitScreenInterface> = ({setAnimationFinished}) => {
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      
+      setAnimationFinished(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className="w-screen h-screen bg-[url('/images/battle_bg.webp')] bg-no-repeat bg-cover">
       <KaotikaLegendsLogo/>
