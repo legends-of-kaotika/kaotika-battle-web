@@ -15,7 +15,7 @@ const InitScreen: React.FC<InitScreenInterface> = ({setAnimationFinished}) => {
     const timer = setTimeout(() => {
       
       setAnimationFinished(true);
-    }, 10000);
+    }, 1000000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -26,7 +26,7 @@ const InitScreen: React.FC<InitScreenInterface> = ({setAnimationFinished}) => {
   ];
 
   return (
-    <div className="w-screen h-screen bg-[url('/images/battle_bg.webp')] bg-no-repeat bg-cover">
+    <div className="w-screen h-screen bg-[url('/images/battle_bg.webp')] bg-no-repeat bg-cover overflow-hidden">
       <KaotikaLegendsLogo/>  
       <div className='flex w-[100%] p-10 items-center h-full justify-center overflow-hidden'>
         {
