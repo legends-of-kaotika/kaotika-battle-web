@@ -50,19 +50,16 @@ export const useSocketListeners = () => {
 
     function connectedUsers(data: PlayersRole) {
       console.log('conected users ' + data);
-      setPlayers(data); 
+      setPlayers(data);
     }
 
     function gameStart(){
       console.log('enter in socket gameStart');
-
       setStartBattle(true);
     }
 
     function webSelectedPlayer(id: string) {
       console.log('enter in selected player');
-
-
       setDefender(getPlayerById(players, id)!);
     }
 
@@ -83,33 +80,34 @@ export const useSocketListeners = () => {
       setFinishTurn(false);
     }
 
-    function deletePlayer(id: string) : void{
+    function removePlayer(id: string) : void{
       console.log('remove player with the id ' + id);
       setPlayers(deletePlayerById(players, id));
     }
 
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-    socket.on('web-sendUser', webSendUser);
-    socket.on('connectedUsers', connectedUsers);
-    socket.on('gameStart', gameStart);
-    socket.on('web-setSelectedPlayer', webSelectedPlayer);
-    socket.on('updatePlayer', updatePlayer);
-    socket.on('assign-turn', assignTurn);
-    socket.on('removePlayer', deletePlayer);
+    socket.on(socketName.CONNECT, onConnect);
+    socket.on(socketName.DISCONNECT, onDisconnect);
+    socket.on(socketName.WEBSENDUSER, webSendUser);
+    socket.on(socketName.CONNECTEDUSERS, connectedUsers);
+    socket.on(socketName.GAMESTART, gameStart);
+    socket.on(socketName.WEBSELECTEDPLAYER, webSelectedPlayer);
+    socket.on(socketName.UPDATEPLAYER, updatePlayer);
+    socket.on(socketName.ASSIGNTURN, assignTurn);
+    socket.on(socketName.REMOVEPLAYER, removePlayer);
 
+    console.log('PLAYERS');
     console.log(players);
 
     return () => {
       socket.off(socketName.CONNECT, onConnect);
       socket.off(socketName.DISCONNECT, onDisconnect);
-      socket.off('connectedUsers');
-      socket.off('web-sendUser');
-      socket.off('gameStart');
-      socket.off('web-setSelectedPlayer');
-      socket.off('updatePlayer');
-      socket.off('assign-turn');
-      socket.off('removePlayer');
+      socket.off(socketName.WEBSENDUSER, webSendUser);
+      socket.off(socketName.CONNECTEDUSERS, connectedUsers);
+      socket.off(socketName.GAMESTART, gameStart);
+      socket.off(socketName.WEBSELECTEDPLAYER, webSelectedPlayer);
+      socket.off(socketName.UPDATEPLAYER, updatePlayer);
+      socket.off(socketName.ASSIGNTURN, assignTurn);
+      socket.off(socketName.REMOVEPLAYER, removePlayer);
       
     };
   }, [players]);
