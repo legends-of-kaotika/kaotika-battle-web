@@ -7,7 +7,7 @@ const InitScreen: React.FC = () => {
 
   const animations : string[] = [
     'animate__backInLeft',
-    'animate__backInRight transform scale-x-[-1]',
+    'animate__backInLeft transform scale-x-[-1]',
   ];
 
   return (
