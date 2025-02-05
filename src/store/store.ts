@@ -16,14 +16,13 @@ const useStore = create<AppState>()((set) => ({
   addRound: (by: number) => set((state) => ({ round: state.round += by })),
   attacker: null,
   defender: null,
-
   setAttacker: (attacker: Player | null) => set(() => ({ attacker: attacker })),
   setDefender: (defender: Player | null) => set(() => ({ defender: defender })),
   setPlayers: (players: PlayersRole) => set(() => ({ players: players })),
   timer: -1,
   setTimer: (timer: number) => set(() => ({ timer: timer })),
-
-
+  disconnectedPlayer: '',
+  setDisconnectedPlayer: (disconnectedPlayer: string) => set(() => ({ disconnectedPlayer: disconnectedPlayer })),
 }));
 
 export default useStore;
