@@ -15,7 +15,7 @@ const InitScreen: React.FC<InitScreenInterface> = ({setAnimationFinished}) => {
     const timer = setTimeout(() => {
       
       setAnimationFinished(true);
-    }, 1000000);
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, []);
