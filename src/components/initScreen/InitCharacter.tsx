@@ -9,7 +9,7 @@ export default function InitCharacter({character, styleClass} : InitCharacterPro
 
 
   return (
-    <div className={`animate__animated ${styleClass}  border-2 border-orange-200`}>
+    <div className={`animate__animated ${styleClass}`}>
       <img
         src={character}
       />
