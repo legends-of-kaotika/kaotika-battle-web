@@ -14,15 +14,6 @@ const useStore = create<AppState>()((set) => ({
   socket: io(SERVER_URL),
   round: 1,
   addRound: (by: number) => set((state) => ({ round: state.round += by })),
-  attack: (hit_points: number) => set((state) => ({
-    defender: {
-      ...state.defender!,
-      attributes: {
-        ...state.defender!.attributes,
-        hit_points: state.defender!.attributes.hit_points - hit_points
-      }
-    }
-  })),
   attacker: null,
   defender: null,
 
