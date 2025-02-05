@@ -1,108 +1,14 @@
-import { useEffect, useState } from 'react';
 import './App.css';
 import BattleContainer from './components/battle/BattleContainer';
 import FinishTurn from './components/battle/finishTurn';
 import WaitingBattle from './components/battle/WaitingBattle';
 import Hud from './components/footer/Hud';
 import HeaderContainer from './components/header/HeaderContainer';
-import getPlayerById from './helpers/getPlayerById';
-import updatePlayerById from './helpers/updatePlayerById';
-import { Player } from './Interfaces/Player';
-import { PlayersRole } from './Interfaces/PlayerRole';
-import useStore from './store/store';
+import { useSocketListeners } from './sockets/socketListeners';
 import battleImage from '/images/battle_bg.webp';
-import { deletePlayerById } from './helpers/utils';
 
 function App() {
-  const { players, addKaotika, addDravocar, socket, setPlayers, setDefender, timer, setAttacker} = useStore();
-  const [isConnected, setIsConnected] = useState<boolean>(socket.connected);
-  const [startBattle, setStartBattle] = useState<boolean>(false);
-  const [finishTurn, setFinishTurn] = useState<boolean>(false);
-
-  useEffect(() => {
-    socket.emit('web-sendSocketId');
-    socket.emit('web-sendUsers');
-  }, []);
-
-  useEffect(() => {
-    function onConnect() {
-      setIsConnected(true);
-    }
-
-    function onDisconnect() {
-      setIsConnected(false);
-    }
-
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-
-    socket.on('web-sendUser', (data: Player) => {
-      console.log('enter in web-sendUser ' + data);
-      if(data.isBetrayer){
-        addDravocar(data);
-      }else{
-        addKaotika(data);
-      }    
-    });
-
-    socket.on('connectedUsers', (data : PlayersRole) => {
-      console.log('connected users ' + data);
-
-      setPlayers(data);
-    });
-
-    socket.on('gameStart', () => {
-      console.log('gameStart');
-      setStartBattle(true);
-    });
-
-    socket.on('web-setSelectedPlayer', (id: string) => {
-      console.log(`Selecting player defender with the id ${id}`);
-      setDefender(getPlayerById(players, id)!);
-    });
-
-    socket.on('updatePlayer', (id: string, attr: Partial<Player>, totalDamage: number) => {
-      console.log('daño: ' + totalDamage);
-      setPlayers(updatePlayerById(players, id, attr));
-      socket.emit('web-turnEnd');
-      setFinishTurn(true);
-    });
-
-    socket.on('assign-turn', (id: string) => {
-      setAttacker(getPlayerById(players, id)!);
-      setFinishTurn(false);
-    });
-
-    socket.on('removePlayer', (id : string) => {
-      setPlayers(deletePlayerById(players, id));
-    });
-
-    return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
-      socket.off('connectedUsers');
-      socket.off('web-sendUser');
-      socket.off('gameStart');
-      socket.off('web-setSelectedPlayer');
-      socket.off('updatePlayer');
-      socket.off('removePlayer');
-    };
-  }, []);
-
-  useEffect(() => {
-    console.log('Connected to socket server: ' + isConnected);
-  }, [isConnected]);
-
-  useEffect(() => {
-    if (timer === 0) {
-      socket.emit('web-turnEnd');
-      setFinishTurn(true);
-    };
-  }, [socket, timer]);
-
-  useEffect(() => {
-    console.log(players);
-  }, [players]);
+  const { startBattle, finishTurn } = useSocketListeners();
 
   return (
     <div

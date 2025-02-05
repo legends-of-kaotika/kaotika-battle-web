@@ -6,7 +6,6 @@ const BattleTime = () => {
 
   useEffect(() => {
     socket.on('send-timer', (timer: number) => {
-      console.log(`timer : ${timer}`);
       setTimer(timer);
     });
 
