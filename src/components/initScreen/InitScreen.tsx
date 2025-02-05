@@ -1,14 +1,29 @@
+import 'animate.css';
 import KaotikaLegendsLogo from './KaotikaLengedsLogo';
-
+import warrior from '/images/Warrior1.png';
 import InitCharacter from './InitCharacter';
 
 const InitScreen: React.FC = () => {
 
+  const animations : string[] = [
+    'animate__backInLeft',
+    'animate__backInRight transform scale-x-[-1]',
+  ];
+
   return (
     <div className="w-screen h-screen bg-[url('/images/battle_bg.webp')] bg-no-repeat bg-cover">
-      <KaotikaLegendsLogo/>      <InitCharacter
-        styleClass=""
-        character=""/>
+      <KaotikaLegendsLogo/>  
+      <div className='flex w-[100%] p-10 items-center h-full justify-center overflow-hidden'>
+        {
+          animations.map((animation, i)=> (
+            <InitCharacter
+              key={i}
+              character={warrior}
+              styleClass={animation}
+            />
+          ))
+        }
+      </div>
     </div>
   );
 };
