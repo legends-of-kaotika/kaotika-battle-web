@@ -7,7 +7,7 @@ const Battle: React.FC = () => {
   const { attacker, defender } = useStore();
 
   return (
-    <div className="w-[98%] flex justify-around items-center">
+    <div className="w-[98%] flex justify-around items-center  ">
       <Opponent player={attacker!} ></Opponent>
       <Opponent
         player={defender!}
