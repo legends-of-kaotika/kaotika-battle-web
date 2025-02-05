@@ -12,7 +12,7 @@ import battleImage from '/images/battle_bg.webp';
 function App() {
   const { startBattle, finishTurn } = useSocketListeners();
   const [initScreen] = useState(true);
-  const [animationFinished, setAnimationFinished] = useState(false);
+  const [animationFinished, setAnimationFinished] = useState(true);
 
   return (
     <>
@@ -23,7 +23,7 @@ function App() {
         />
         :
         <div
-          className='w-screen h-screen bg-center bg-cover'
+          className='w-screen h-screen bg-center bg-cover overflow-hidden'
           style={{ backgroundImage: `url(${battleImage})` }}>
 
           {/* Header Container */}

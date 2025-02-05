@@ -5,9 +5,10 @@ import { getPhotoByRole } from '../../helpers/getPhotoByRole';
 interface OpponentProps {
   player: Player;
   styles?: string;
+  styleClass: string;
 }
 
-const Opponent: React.FC<OpponentProps> = ({ player, styles}) => {
+const Opponent: React.FC<OpponentProps> = ({ player, styles, styleClass}) => {
   const [warriorPhoto, setWarriorPhoto] = useState<string>('');
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const Opponent: React.FC<OpponentProps> = ({ player, styles}) => {
   }, [player]);
 
   return (
-    <div className="w-[45%] h-[90%] mr-[5%] mt-[15%]">
+    <div className={`animate__animated ${styleClass} w-[45%] h-[90%] mr-[5%] mt-[15%]`}>
 
       {warriorPhoto !== '' ? (
         <img
@@ -26,7 +27,7 @@ const Opponent: React.FC<OpponentProps> = ({ player, styles}) => {
           className={`h-full w-full object-cover z-0 ${styles}`}
           
         />
-      ) : null}
+      ) : null} 
 
     </div>
   );
