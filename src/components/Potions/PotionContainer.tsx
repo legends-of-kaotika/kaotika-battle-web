@@ -12,12 +12,14 @@ const PotionContainer: React.FC = () => {
     enhancer_potions: []
   };
 
+  const betrayer = attacker?.isBetrayer;
+
   const inventory: Inventory = attacker?.inventory || defaultInventory;
   const potionImages = getPotionImages(inventory);
 
   if (attacker) {
     return (
-      <div className="flex flex-col h-auto w-1/12 justify-center items-center">
+      <div className={`flex flex-col h-auto w-1/12 justify-center items-center ${betrayer? 'ml-auto' : 'mr-auto'}`}>
         <div className="flex flex-col">
           {[...Array(3)].map((_, index) => (
             <div
