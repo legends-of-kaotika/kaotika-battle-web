@@ -23,7 +23,7 @@ function App() {
         />
         :
         <div
-          className='w-screen h-screen bg-center bg-cover'
+          className='w-screen h-screen bg-center bg-cover overflow-hidden'
           style={{ backgroundImage: `url(${battleImage})` }}>
 
           {/* Header Container */}
