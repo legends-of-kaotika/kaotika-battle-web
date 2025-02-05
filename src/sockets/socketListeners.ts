@@ -114,7 +114,7 @@ export const useSocketListeners = () => {
       socket.off(socketName.UPDATEPLAYER, updatePlayer);
       socket.off(socketName.ASSIGNTURN, assignTurn);
       socket.off(socketName.REMOVEPLAYER, removePlayer);
-      
+      socket.off(socketName.PLAYERDISCONNECTED, playerDisconnected);
     };
   }, [players]);
 
