@@ -11,11 +11,13 @@ const HeaderContainer: React.FC = () => {
   const { attacker, defender } = useStore();
   
   useEffect(() => {
-    console.log('attacker' + attacker);
+    console.log('attacker');
+    console.log(attacker);
   }, [attacker]);
 
   useEffect(() => {
-    console.log('defender' + defender);
+    console.log('defender');
+    console.log(defender);
   }, [defender]);
 
   return (
