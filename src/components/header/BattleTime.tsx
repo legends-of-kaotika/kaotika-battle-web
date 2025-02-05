@@ -6,7 +6,6 @@ const BattleTime = () => {
 
   useEffect(() => {
     socket.on('send-timer', (timer: number) => {
-      console.log(`timer : ${timer}`);
       setTimer(timer);
     });
 
@@ -17,7 +16,7 @@ const BattleTime = () => {
 
   return (
     <div className="flex w-full rounded-md text-5xl justify-center items-center pt-[45%]">
-      {timer}
+      {timer !== -1 ? timer : null}
     </div>
   );
 };

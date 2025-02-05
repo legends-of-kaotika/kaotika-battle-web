@@ -1,10 +1,10 @@
+import { io } from 'socket.io-client';
 import { create } from 'zustand';
 import { AppState } from '../Interfaces/AppState';
-import { io } from 'socket.io-client';
 import { Player } from '../Interfaces/Player';
 import { PlayersRole } from '../Interfaces/PlayerRole';
 
-const SERVER_URL = 'https://kaotika-battle-server.onrender.com';
+const SERVER_URL = 'https://kaotika-battle-server-yqen.onrender.com';
 
 const useStore = create<AppState>()((set) => ({
 
@@ -29,7 +29,7 @@ const useStore = create<AppState>()((set) => ({
   setAttacker: (attacker: Player | null) => set(() => ({ attacker: attacker })),
   setDefender: (defender: Player | null) => set(() => ({ defender: defender })),
   setPlayers: (players: PlayersRole) => set(() => ({ players: players })),
-  timer: 0,
+  timer: -1,
   setTimer: (timer: number) => set(() => ({ timer: timer })),
 
 
