@@ -12,12 +12,15 @@ import battleImage from '/images/battle_bg.webp';
 function App() {
   const { startBattle, finishTurn } = useSocketListeners();
   const [initScreen] = useState(true);
+  const [animationFinished, setAnimationFinished] = useState(false);
 
   return (
     <>
-      {initScreen
+      {initScreen && !animationFinished
         ? 
-        <InitScreen />
+        <InitScreen 
+          setAnimationFinished={setAnimationFinished}
+        />
         :
         <div
           className='w-screen h-screen bg-center bg-cover'
