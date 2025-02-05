@@ -1,9 +1,24 @@
+import { useEffect } from 'react';
 import 'animate.css';
 import KaotikaLegendsLogo from './KaotikaLengedsLogo';
 import warrior from '/images/Warrior1.png';
 import InitCharacter from './InitCharacter';
 
-const InitScreen: React.FC = () => {
+interface InitScreenInterface {
+  // eslint-disable-next-line no-unused-vars
+  setAnimationFinished: (value: boolean) => void;
+}
+
+const InitScreen: React.FC<InitScreenInterface> = ({setAnimationFinished}) => {
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      
+      setAnimationFinished(true);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const animations : string[] = [
     'animate__backInLeft',
