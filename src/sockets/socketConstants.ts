@@ -8,5 +8,9 @@ export const socketName = {
   ASSIGNTURN: 'assign-turn',
   REMOVEPLAYER: 'removePlayer',
   WEBSENDUSER: 'web-sendUser',
+<<<<<<< HEAD
   PLAYERDISCONNECTED: 'web-playerDisconnected',
+=======
+  GAME_END: 'gameEnd'
+>>>>>>> develop
 };

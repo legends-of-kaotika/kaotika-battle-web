@@ -16,6 +16,13 @@ export const useSocketListeners = () => {
   useEffect(() => {
     socket.emit('web-sendSocketId');
     socket.emit('web-sendUsers');
+    socket.on(socketName.GAME_END, (name : string) => {
+      console.log(name);
+    });
+
+    return (() => {
+      socket.off(socketName.GAME_END);
+    });
   }, []);
 
   useEffect(() => {
@@ -118,6 +125,7 @@ export const useSocketListeners = () => {
       socket.off(socketName.PLAYERDISCONNECTED, playerDisconnected);
     };
   }, [players]);
+
 
   return { startBattle, finishTurn };
 };
