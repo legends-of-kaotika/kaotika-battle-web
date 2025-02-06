@@ -7,5 +7,6 @@ export const socketName = {
   UPDATEPLAYER: 'updatePlayer',
   ASSIGNTURN: 'assign-turn',
   REMOVEPLAYER: 'removePlayer',
-  WEBSENDUSER: 'web-sendUser'
+  WEBSENDUSER: 'web-sendUser',
+  GAME_END: 'gameEnd'
 };

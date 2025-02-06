@@ -33,6 +33,7 @@ const HeaderContainer: React.FC = () => {
       {/* Left Player Avatar */}
       <LeftPlayerAvatar
         player={attacker?.isBetrayer ? defender! : attacker!}
+        isAttacker={attacker?.isBetrayer ? false! : true!}
       />
 
       {/* Left Player Attributes */}
@@ -51,6 +52,7 @@ const HeaderContainer: React.FC = () => {
       {/* Right Player Avatar */}
       <RightPlayerAvatar
         player={attacker?.isBetrayer ? attacker! : defender!}
+        isAttacker={attacker?.isBetrayer ? true! : false!}
       />
 
     </div>
