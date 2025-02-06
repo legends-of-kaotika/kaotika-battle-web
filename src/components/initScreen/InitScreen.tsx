@@ -1,8 +1,8 @@
-import 'animate.css';
+/* import 'animate.css';
 import { useEffect, useState } from 'react';
 import InitCharacter from './InitCharacter';
 import KaotikaLegendsLogo from './KaotikaLengedsLogo';
-import warrior from '/images/Warrior1.png';
+import loadBackground from '/images/load_bg.webp';
 
 interface InitScreenInterface {
   // eslint-disable-next-line no-unused-vars
@@ -22,26 +22,20 @@ const InitScreen: React.FC<InitScreenInterface> = ({setAnimationFinished}) => {
   }, []);
 
   const animations : string[] = [
-    'animate__backInLeft',
-    'animate__backInLeft transform scale-x-[-1]',
+    'animate__fadeIn',
   ];
 
-  const styles : string[] = [
-    '',
-    'transform scale-x-[-1]'
-  ];
 
   return (
     <div className="w-screen h-screen bg-[url('/images/battle_bg.webp')] bg-no-repeat bg-cover overflow-hidden max-h-full">
       {loaded ? null : (
-        <div className='absolute top-50 overflow-hidden'>
-          <div className='flex w-[100%] p-10 items-center h-full justify-center'>
+        <div className='absolute overflow-hidden'>
+          <div className='flex w-[100%] p-2 items-center h-[90%] justify-center'>
             {
               animations.map((animation, i)=> (
                 <InitCharacter
                   key={i}
-                  character={warrior}
-                  styleClass={styles[i]}
+                  character={loadBackground}
                   animate={animation}
                   setLoaded={setLoaded}
                 />
@@ -58,4 +52,4 @@ const InitScreen: React.FC<InitScreenInterface> = ({setAnimationFinished}) => {
   );
 };
 
-export default InitScreen;
+export default InitScreen; */
