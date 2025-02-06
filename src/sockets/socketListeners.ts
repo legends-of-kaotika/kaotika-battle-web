@@ -16,13 +16,6 @@ export const useSocketListeners = () => {
   useEffect(() => {
     socket.emit('web-sendSocketId');
     socket.emit('web-sendUsers');
-    socket.on(socketName.GAME_END, (name : string) => {
-      console.log(name);
-    });
-
-    return (() => {
-      socket.off(socketName.GAME_END);
-    });
   }, []);
 
   useEffect(() => {
@@ -79,11 +72,9 @@ export const useSocketListeners = () => {
 
     function assignTurn(id: string) {
       console.log('assign turn to next person');
-
       setAttacker(getPlayerById(players, id)!);
       console.log('ATTACKER');
       console.log(attacker?.name);
-      
       setFinishTurn(false);
     }
 
@@ -92,6 +83,7 @@ export const useSocketListeners = () => {
       setPlayers(deletePlayerById(players, id));
     }
 
+    socket.on(socketName.GAME_END, () => {});
     socket.on(socketName.CONNECT, onConnect);
     socket.on(socketName.DISCONNECT, onDisconnect);
     socket.on(socketName.WEBSENDUSER, webSendUser);
@@ -115,7 +107,7 @@ export const useSocketListeners = () => {
       socket.off(socketName.UPDATEPLAYER, updatePlayer);
       socket.off(socketName.ASSIGNTURN, assignTurn);
       socket.off(socketName.REMOVEPLAYER, removePlayer);
-      
+      socket.off(socketName.GAME_END, );
     };
   }, [players]);
 
