@@ -32,9 +32,9 @@ function App() {
           <InitAltScreen setAnimationFinished={setAnimationFinished} />
         </div>
       )}
-      
+
       <div
-        className={`w-screen h-screen bg-center bg-cover overflow-hidden ${showMainContent ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
+        className={`absolute inset-0 bg-center bg-cover transition-opacity duration-2000 ${animationFinished ? 'opacity-100' : 'opacity-0'}`}
         style={{ backgroundImage: `url(${battleImage})` }}>
         {/* Header Container */}
         {startBattle && <HeaderContainer />}
